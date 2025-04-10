@@ -1,0 +1,19 @@
+# Nuxt项目常见的忽略目录
+.nuxt
+.output
+node_modules
+
+# 开发环境文件
+.DS_Store
+.env
+.env.local
+
+# 编辑器目录
+.vscode
+.idea
+
+# 日志文件
+*.log
+
+# 系统文件
+Thumbs.db
