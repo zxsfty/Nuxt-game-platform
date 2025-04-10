@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary-dark: 0, 0, 0;
+    --color-primary-light: 255, 255, 255;
+    --color-primary-accent: 255, 0, 0;
+    
+    --color-secondary-dark: 30, 27, 75;
+    --color-secondary-light: 79, 70, 229;
+    --color-secondary-accent: 167, 139, 250;
+    
+    --color-neon-blue: 59, 130, 246;
+    --color-neon-cyan: 0, 255, 255;
+    --color-neon-red: 255, 0, 0;
+  }
+  
+  body {
+    @apply bg-primary-dark text-gray-100 font-sans;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-mono tracking-tighter;
+  }
+  
+  .neon-text {
+    text-shadow: 0 0 5px rgba(var(--color-neon-blue), 0.8);
+  }
+  
+  .neon-border {
+    box-shadow: 0 0 10px rgba(var(--color-neon-purple), 0.8);
+  }
+}

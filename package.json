@@ -1,0 +1,35 @@
+{
+  "name": "game-platform",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@nuxtjs/tailwindcss": "^6.8.0",
+    "@types/webpack-bundle-analyzer": "^4.7.0",
+    "nuxt": "^3.10.0",
+    "pinia": "^2.1.0",
+    "vue": "^3.3.0"
+  },
+  "devDependencies": {
+    "@nuxt/schema": "^3.16.2",
+    "@nuxt/types": "^2.18.1",
+    "@types/node": "^22.14.0",
+    "@types/webpack": "^5.28.5",
+    "@types/webpack-dev-middleware": "^5.0.2",
+    "@types/webpack-hot-middleware": "^2.25.9",
+    "@vue/runtime-core": "^3.5.13",
+    "css-minimizer-webpack-plugin": "^7.0.2",
+    "esbuild-loader": "^4.3.0",
+    "mini-css-extract-plugin": "^2.9.2",
+    "nitropack": "^2.11.8",
+    "typescript": "^5.2.0",
+    "vue-loader": "^17.4.2",
+    "vue-tsc": "^2.2.8"
+  }
+}
