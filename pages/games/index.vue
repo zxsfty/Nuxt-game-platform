@@ -1,14 +1,18 @@
 <template>
   <div class="space-y-8">
-    <section class="hero-section bg-primary-light rounded-lg p-8 border-2 border-neon-blue">
+    <!-- 主题切换卡片 -->
+    <section class="theme-toggle-section bg-primary-light p-6 rounded-lg border border-primary-accent/30">
+      <ThemeStyleToggle />
+    </section>
+    <section class="hero-section bg-primary-light rounded-lg p-8 border border-primary-accent/30">
       <div class="max-w-3xl mx-auto text-center">
-        <h1 class="text-5xl font-bold mb-6 text-neon-blue">游戏信息中心</h1>
-        <p class="text-xl mb-8">探索未来世界的精彩游戏，发现属于你的科幻冒险</p>
+        <h1 class="text-5xl font-bold mb-6 text-primary-accent font-serif">The broken with star sinks</h1>
+        <p class="text-xl mb-8">The broken with star sinks</p>
         <div class="flex justify-center space-x-4">
-          <button class="bg-neon-purple hover:bg-neon-blue text-white font-bold py-2 px-4 rounded-full transition-all">
+          <button class="bg-primary-accent/80 hover:bg-primary-accent text-primary-light font-bold py-2 px-4 rounded-full transition-all">
             热门游戏
           </button>
-          <button class="bg-transparent hover:bg-neon-purple text-white font-bold py-2 px-4 rounded-full border border-neon-purple transition-all">
+          <button class="bg-transparent hover:bg-primary-accent/20 text-primary-light font-bold py-2 px-4 rounded-full border border-primary-accent transition-all">
             最新发布
           </button>
         </div>
@@ -16,14 +20,14 @@
     </section>
 
     <!-- 游戏筛选区域 -->
-    <section class="filter-section bg-primary-light p-6 rounded-lg neon-border">
+    <section class="filter-section bg-primary-light p-6 rounded-lg border border-primary-accent/30">
       <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
         <div class="flex-1">
           <div class="relative">
             <input 
               type="text" 
               placeholder="搜索游戏..." 
-              class="w-full bg-secondary-dark border border-neon-blue/30 rounded-full px-4 py-2 pl-10 focus:outline-none focus:ring-2 focus:ring-neon-blue"
+              class="w-full bg-secondary-dark border border-primary-accent/30 rounded-full px-4 py-2 pl-10 focus:outline-none focus:ring-2 focus:ring-primary-accent"
               v-model="searchQuery"
             />
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 absolute left-3 top-2.5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -33,7 +37,7 @@
         </div>
         <div class="flex space-x-2">
           <select 
-            class="bg-secondary-dark border border-neon-blue/30 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-neon-blue"
+            class="bg-secondary-dark border border-primary-accent/30 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-accent"
             v-model="selectedGenre"
           >
             <option value="all">所有类型</option>
@@ -44,7 +48,7 @@
             <option value="adventure">冒险</option>
           </select>
           <select 
-            class="bg-secondary-dark border border-neon-blue/30 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-neon-blue"
+            class="bg-secondary-dark border border-primary-accent/30 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-accent"
             v-model="sortBy"
           >
             <option value="rating">评分最高</option>
@@ -59,8 +63,8 @@
 
     <!-- 特色游戏 -->
     <section class="featured-games">
-      <h2 class="text-3xl font-bold text-neon-blue mb-6">特色游戏</h2>
-      <div class="relative overflow-hidden rounded-lg neon-border">
+      <h2 class="text-3xl font-bold text-primary-accent mb-6 font-serif">特色游戏</h2>
+      <div class="relative overflow-hidden rounded-lg border border-primary-accent/30">
         <!-- 轮播图 -->
         <div class="relative h-96">
           <div 
@@ -70,29 +74,29 @@
             :class="{ 'opacity-100': currentSlide === index, 'opacity-0': currentSlide !== index }"
           >
             <img :src="game.image" :alt="game.title" class="w-full h-full object-cover" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-secondary-dark/80 via-secondary-dark/40 to-transparent"></div>
             <div class="absolute bottom-0 left-0 p-8 w-full">
-              <h3 class="text-4xl font-bold mb-2 text-neon-blue">{{ game.title }}</h3>
-              <p class="text-xl mb-4 text-white/90 max-w-2xl">{{ game.description }}</p>
+              <h3 class="text-4xl font-bold mb-2 text-primary-accent font-serif">{{ game.title }}</h3>
+              <p class="text-xl mb-4 text-primary-light max-w-2xl">{{ game.description }}</p>
               <div class="flex items-center space-x-4 mb-4">
                 <div class="flex items-center">
-                  <span class="text-neon-blue font-bold text-2xl">{{ game.rating }}</span>
-                  <span class="text-gray-400 ml-1">/10</span>
+                  <span class="text-primary-accent font-bold text-2xl">{{ game.rating }}</span>
+                  <span class="text-secondary-light ml-1">/10</span>
                 </div>
                 <div class="flex items-center space-x-1">
-                  <span class="text-gray-400">类型:</span>
-                  <span class="text-white">{{ game.genre }}</span>
+                  <span class="text-secondary-light">类型:</span>
+                  <span class="text-primary-light">{{ game.genre }}</span>
                 </div>
                 <div class="flex items-center space-x-1">
-                  <span class="text-gray-400">发行日期:</span>
-                  <span class="text-white">{{ game.releaseDate }}</span>
+                  <span class="text-secondary-light">发行日期:</span>
+                  <span class="text-primary-light">{{ game.releaseDate }}</span>
                 </div>
               </div>
               <div class="flex space-x-4">
-                <button class="bg-neon-blue hover:bg-neon-purple text-white font-bold py-2 px-6 rounded-full transition-all transform hover:scale-105">
+                <button class="bg-primary-accent/80 hover:bg-primary-accent text-primary-light font-bold py-2 px-6 rounded-full transition-all transform hover:scale-105">
                   了解详情
                 </button>
-                <button class="bg-transparent hover:bg-neon-blue/20 text-white font-bold py-2 px-6 rounded-full border border-neon-blue transition-all transform hover:scale-105">
+                <button class="bg-transparent hover:bg-primary-accent/20 text-primary-light font-bold py-2 px-6 rounded-full border border-primary-accent transition-all transform hover:scale-105">
                   加入愿望单
                 </button>
               </div>

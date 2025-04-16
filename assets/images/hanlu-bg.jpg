@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <linearGradient id="hanlu-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#b8c6db" />
+      <stop offset="100%" stop-color="#8da4c9" />
+    </linearGradient>
+    <pattern id="hanlu-pattern" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M30,0 L60,30 L30,60 L0,30 Z" fill="none" stroke="rgba(106, 133, 182, 0.3)" stroke-width="1.5"/>
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#hanlu-gradient)" />
+  <rect width="100%" height="100%" fill="url(#hanlu-pattern)" />
+  <g transform="translate(960, 540)">
+    <path d="M-300,-50 C-200,-150 200,-150 300,-50 C350,0 350,100 300,150 C200,250 -200,250 -300,150 C-350,100 -350,0 -300,-50 Z" fill="none" stroke="rgba(106, 133, 182, 0.4)" stroke-width="2" />
+    <path d="M-250,-30 C-150,-100 150,-100 250,-30 C300,0 300,60 250,100 C150,170 -150,170 -250,100 C-300,60 -300,0 -250,-30 Z" fill="none" stroke="rgba(106, 133, 182, 0.4)" stroke-width="2" />
+    <path d="M-200,-20 C-100,-70 100,-70 200,-20 C240,0 240,40 200,70 C100,120 -100,120 -200,70 C-240,40 -240,0 -200,-20 Z" fill="none" stroke="rgba(106, 133, 182, 0.4)" stroke-width="2" />
+  </g>
+  <text x="960" y="540" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="rgba(255, 255, 255, 0.7)">寒露 - 深邃蓝紫</text>
+</svg>

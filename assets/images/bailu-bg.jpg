@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <linearGradient id="bailu-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f5f5f5" />
+      <stop offset="100%" stop-color="#e8e8d8" />
+    </linearGradient>
+    <pattern id="bailu-pattern" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M25,0 L50,25 L25,50 L0,25 Z" fill="none" stroke="rgba(168, 160, 122, 0.2)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#bailu-gradient)" />
+  <rect width="100%" height="100%" fill="url(#bailu-pattern)" />
+  <g transform="translate(960, 540)">
+    <path d="M0,-200 C100,-150 150,-100 200,0 C150,100 100,150 0,200 C-100,150 -150,100 -200,0 C-150,-100 -100,-150 0,-200 Z" fill="none" stroke="rgba(168, 160, 122, 0.3)" stroke-width="2" />
+    <path d="M0,-150 C75,-112.5 112.5,-75 150,0 C112.5,75 75,112.5 0,150 C-75,112.5 -112.5,75 -150,0 C-112.5,-75 -75,-112.5 0,-150 Z" fill="none" stroke="rgba(168, 160, 122, 0.3)" stroke-width="2" />
+    <path d="M0,-100 C50,-75 75,-50 100,0 C75,50 50,75 0,100 C-50,75 -75,50 -100,0 C-75,-50 -50,-75 0,-100 Z" fill="none" stroke="rgba(168, 160, 122, 0.3)" stroke-width="2" />
+  </g>
+  <text x="960" y="540" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="rgba(168, 160, 122, 0.5)">白露 - 清新淡雅</text>
+</svg>

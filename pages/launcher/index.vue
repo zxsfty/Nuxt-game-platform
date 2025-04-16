@@ -2,7 +2,7 @@
   <div class="space-y-8">
     <section class="hero-section bg-primary-light rounded-lg p-8 border-2 border-neon-blue">
       <div class="max-w-3xl mx-auto text-center">
-        <h1 class="text-5xl font-bold mb-6 text-neon-blue">科幻游戏启动器</h1>
+        <h1 class="text-5xl font-bold mb-6 text-neon-blue">The broken with star sinks</h1>
         <p class="text-xl mb-8">一站式管理您的游戏，畅享无缝游戏体验</p>
         <div class="flex justify-center space-x-4">
           <button class="bg-neon-purple hover:bg-neon-blue text-white font-bold py-2 px-4 rounded-full transition-all">

@@ -1,0 +1,1794 @@
+/* 节气主题动画效果 */
+
+/* 动画密度变量，用于性能优化 */
+:root {
+  --animation-density: 1; /* 默认值为1，表示完整动画效果 */
+  --animation-throttle: 300ms; /* 默认节流时间，与utils/index.ts中的throttle函数默认值保持一致 */
+}
+
+/* 通用过渡动画 */
+.theme-transitioning * {
+  transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease !important;
+}
+
+/* 节气特定导航栏样式 */
+.seasonal-accent-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--seasonal-accent-color), transparent);
+  opacity: 0.7;
+  animation: accentLinePulse 4s ease-in-out infinite;
+}
+
+@keyframes accentLinePulse {
+  0% { opacity: 0.5; transform: scaleX(0.95); }
+  50% { opacity: 0.9; transform: scaleX(1); }
+  100% { opacity: 0.5; transform: scaleX(0.95); }
+}
+
+.bailu-accent-line {
+  background: linear-gradient(90deg, transparent, var(--dew-color-1), transparent);
+  box-shadow: 0 0 8px var(--dew-glow);
+}
+
+.hanlu-accent-line {
+  background: linear-gradient(90deg, transparent, var(--leaf-color-1), transparent);
+  box-shadow: 0 0 8px var(--leaf-glow);
+}
+
+.xiaohan-accent-line {
+  background: linear-gradient(90deg, transparent, var(--frost-color-1), transparent);
+  box-shadow: 0 0 8px var(--frost-glow);
+}
+
+/* 导航栏毛玻璃效果 */
+header {
+  position: relative;
+  overflow: hidden;
+}
+
+header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  backdrop-filter: blur(10px);
+  z-index: -1;
+}
+
+/* 节气特定导航栏背景效果 */
+.theme-bailu header::before {
+  background: linear-gradient(90deg, rgba(168, 160, 122, 0.05), rgba(168, 160, 122, 0.1), rgba(168, 160, 122, 0.05));
+  box-shadow: 0 0 15px rgba(168, 160, 122, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.theme-hanlu header::before {
+  background: linear-gradient(90deg, rgba(106, 133, 182, 0.05), rgba(106, 133, 182, 0.1), rgba(106, 133, 182, 0.05));
+  box-shadow: 0 0 15px rgba(106, 133, 182, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.theme-xiaohan header::before {
+  background: linear-gradient(90deg, rgba(169, 169, 169, 0.05), rgba(169, 169, 169, 0.1), rgba(169, 169, 169, 0.05));
+  box-shadow: 0 0 15px rgba(169, 169, 169, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+/* 节气特定背景图案 */
+.seasonal-pattern {
+  background-size: 100px 100px;
+  background-repeat: repeat;
+  opacity: 0.1;
+  transition: all 0.5s ease;
+}
+
+.bailu-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 10 L32 15 L37 15 L33 19 L35 24 L30 21 L25 24 L27 19 L23 15 L28 15 Z' stroke='rgba(168, 160, 122, 0.5)' fill='none' /%3E%3C/svg%3E");
+}
+
+.hanlu-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 10 Q60 40 40 70 Q20 40 40 10 Z' stroke='rgba(106, 133, 182, 0.5)' fill='none' /%3E%3C/svg%3E");
+}
+
+.xiaohan-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 5 L22 12 L29 12 L23 17 L25 24 L20 19 L15 24 L17 17 L11 12 L18 12 Z' stroke='rgba(169, 169, 169, 0.5)' fill='none' /%3E%3C/svg%3E");
+}
+
+/* 白露节气特有动画效果 */
+.theme-bailu {
+  --seasonal-particle-color: rgba(168, 160, 122, 0.4);
+  --seasonal-glow-color: rgba(168, 160, 122, 0.2);
+  --seasonal-accent-color: rgba(168, 160, 122, 0.8);
+  --dew-color-1: rgba(168, 160, 122, 0.8);
+  --dew-color-2: rgba(168, 160, 122, 0.1);
+  --dew-glow: rgba(168, 160, 122, 0.5);
+  
+  /* 导航栏特定动画效果 */
+  --nav-animation-speed: 5s;
+  --nav-animation-delay: 0.5s;
+  --nav-particle-size: 5px;
+  --nav-particle-count: 3;
+}
+
+/* 寒露节气特有动画效果 */
+.theme-hanlu {
+  --seasonal-particle-color: rgba(106, 133, 182, 0.4);
+  --seasonal-glow-color: rgba(106, 133, 182, 0.2);
+  --seasonal-accent-color: rgba(106, 133, 182, 0.8);
+  --leaf-color-1: rgba(106, 133, 182, 0.7);
+  --leaf-color-2: rgba(106, 133, 182, 0.3);
+  --leaf-glow: rgba(106, 133, 182, 0.5);
+  
+  /* 导航栏特定动画效果 */
+  --nav-animation-speed: 8s;
+  --nav-animation-delay: 1s;
+  --nav-particle-size: 8px;
+  --nav-particle-count: 5;
+}
+
+/* 小寒节气特有动画效果 */
+.theme-xiaohan {
+  --seasonal-particle-color: rgba(169, 169, 169, 0.4);
+  --seasonal-glow-color: rgba(169, 169, 169, 0.2);
+  --seasonal-accent-color: rgba(169, 169, 169, 0.8);
+  --frost-color-1: rgba(220, 240, 255, 0.7);
+  --frost-color-2: rgba(220, 240, 255, 0.2);
+  --frost-glow: rgba(220, 240, 255, 0.5);
+  
+  /* 导航栏特定动画效果 */
+  --nav-animation-speed: 6s;
+  --nav-animation-delay: 0.8s;
+  --nav-particle-size: 6px;
+  --nav-particle-count: 4;
+}
+
+/* 季节性元素动画 */
+@keyframes floatElement {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.7;
+  }
+  50% {
+    transform: translate(20px, 20px) rotate(180deg);
+    opacity: 0.5;
+  }
+  75% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate(0, 40px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* 改进的露珠滴落动画 */
+@keyframes dewDrop {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(10px) scale(1.1);
+    opacity: 0.9;
+  }
+  90% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(100px) scale(0.5);
+    opacity: 0;
+  }
+}
+
+/* 白露主题组件中的露珠效果 */
+.dew-drops {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.dew-drop {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--dew-color-1) 0%, var(--dew-color-2) 70%, transparent 100%);
+  box-shadow: 0 0 5px var(--dew-glow), inset 0 0 2px rgba(255, 255, 255, 0.8);
+  opacity: 0;
+  animation: dewDrop 5s linear infinite;
+  filter: drop-shadow(0 0 3px var(--dew-glow));
+}
+
+.dew-drop-1 { top: 10%; left: 10%; animation-delay: 0s; }
+.dew-drop-2 { top: 15%; left: 30%; animation-delay: 1s; }
+.dew-drop-3 { top: 8%; left: 50%; animation-delay: 2s; }
+.dew-drop-4 { top: 12%; left: 70%; animation-delay: 1.5s; }
+.dew-drop-5 { top: 20%; left: 85%; animation-delay: 0.5s; }
+.dew-drop-6 { top: 25%; left: 20%; animation-delay: 2.5s; }
+.dew-drop-7 { top: 18%; left: 40%; animation-delay: 3s; }
+.dew-drop-8 { top: 22%; left: 60%; animation-delay: 2s; }
+.dew-drop-9 { top: 15%; left: 80%; animation-delay: 1s; }
+.dew-drop-10 { top: 20%; left: 25%; animation-delay: 1.8s; }
+.dew-drop-11 { top: 18%; left: 65%; animation-delay: 2.2s; }
+.dew-drop-12 { top: 25%; left: 45%; animation-delay: 3.5s; }
+
+/* 白露特有的草叶元素 */
+.bailu-grass {
+  position: absolute;
+  width: 15px;
+  height: 30px;
+  background-image: url("data:image/svg+xml,%3Csvg width='15' height='30' viewBox='0 0 15 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.5 1 C12 10 15 20 7.5 30 C0 20 3 10 7.5 1 Z' fill='var(--dew-color-1)' /%3E%3C/svg%3E");
+  opacity: 0.7;
+  animation: grassSway 8s ease-in-out infinite;
+  transform-origin: bottom center;
+  filter: drop-shadow(0 0 3px var(--dew-glow));
+}
+
+/* 白露特有的光晕效果 */
+.bailu-glow-effect {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--dew-color-1) 0%, var(--dew-color-2) 40%, transparent 70%);
+  opacity: 0.3;
+  animation: bailuGlowPulse 8s ease-in-out infinite;
+  transform-origin: center;
+  filter: blur(8px);
+}
+
+@keyframes bailuGlowPulse {
+  0% { opacity: 0.2; transform: scale(0.8); filter: blur(5px); }
+  50% { opacity: 0.4; transform: scale(1.2); filter: blur(10px); }
+  100% { opacity: 0.2; transform: scale(0.8); filter: blur(5px); }
+}
+
+.bailu-glow-effect-1 {
+  top: 20%;
+  left: 30%;
+  animation-delay: 0s;
+}
+
+.bailu-glow-effect-2 {
+  bottom: 30%;
+  right: 20%;
+  animation-delay: 4s;
+  transform: scale(1.5);
+}
+
+.bailu-grass-1 {
+  bottom: 5%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.bailu-grass-2 {
+  bottom: 3%;
+  left: 50%;
+  animation-delay: 1.5s;
+  transform: scale(0.8);
+}
+
+.bailu-grass-3 {
+  bottom: 7%;
+  right: 15%;
+  animation-delay: 3s;
+  transform: scale(1.2);
+}
+
+@keyframes grassSway {
+  0% {
+    transform: rotate(-5deg) scale(1);
+    filter: drop-shadow(0 0 2px var(--dew-glow));
+  }
+  50% {
+    transform: rotate(5deg) scale(1.05);
+    filter: drop-shadow(0 0 4px var(--dew-glow));
+  }
+  100% {
+    transform: rotate(-5deg) scale(1);
+    filter: drop-shadow(0 0 2px var(--dew-glow));
+  }
+}
+
+/* 改进的秋叶飘落动画 */
+@keyframes leafFall {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 0.8;
+    filter: drop-shadow(0 0 2px var(--leaf-glow));
+  }
+  25% {
+    transform: translateY(25px) translateX(15px) rotate(45deg);
+    opacity: 0.9;
+    filter: drop-shadow(0 0 4px var(--leaf-glow));
+  }
+  50% {
+    transform: translateY(50px) translateX(-15px) rotate(90deg);
+    opacity: 0.8;
+    filter: drop-shadow(0 0 6px var(--leaf-glow));
+  }
+  75% {
+    transform: translateY(75px) translateX(15px) rotate(135deg);
+    opacity: 0.7;
+    filter: drop-shadow(0 0 4px var(--leaf-glow));
+  }
+  100% {
+    transform: translateY(100px) translateX(0) rotate(180deg);
+    opacity: 0;
+    filter: drop-shadow(0 0 2px var(--leaf-glow));
+  }
+}
+
+/* 寒露主题组件中的秋叶效果 */
+.autumn-leaves {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.autumn-leaf {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 1 L9 6 L6 11 L3 6 Z' fill='var(--leaf-color-1)' /%3E%3C/svg%3E");
+  opacity: 0;
+  animation: leafFall 8s linear infinite;
+  filter: drop-shadow(0 0 3px var(--leaf-glow));
+}
+
+.autumn-leaf-1 { top: 5%; left: 10%; animation-delay: 0s; }
+.autumn-leaf-2 { top: 8%; left: 25%; animation-delay: 1s; }
+.autumn-leaf-3 { top: 3%; left: 40%; animation-delay: 2s; }
+
+/* 寒露特有的光晕效果 */
+.hanlu-glow-effect {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--leaf-color-1) 0%, var(--leaf-color-2) 40%, transparent 70%);
+  opacity: 0.3;
+  animation: hanluGlowPulse 10s ease-in-out infinite;
+  transform-origin: center;
+  filter: blur(8px);
+}
+
+/* 主题切换按钮样式 */
+.theme-style-toggle-button {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 节气图标样式 */
+.seasonal-icon {
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: var(--seasonal-accent-color);
+  text-shadow: 0 0 5px var(--seasonal-glow-color);
+  transition: all 0.3s ease;
+}
+
+/* 右下角按钮节气主题增强 */
+.corner-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.corner-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--seasonal-accent-color, rgba(200, 55, 55, 0.2)) 0%, transparent 70%);
+  opacity: 0.2;
+  transition: opacity 0.3s ease;
+}
+
+.corner-button:hover::before {
+  opacity: 0.4;
+}
+
+.corner-button:hover .seasonal-icon {
+  transform: scale(1.1);
+  text-shadow: 0 0 8px var(--seasonal-accent-color);
+}
+
+/* 节气特定图标样式 */
+.bailu-icon {
+  color: var(--dew-color-1) !important;
+  text-shadow: 0 0 5px var(--dew-glow) !important;
+}
+
+.hanlu-icon {
+  color: var(--leaf-color-1) !important;
+  text-shadow: 0 0 5px var(--leaf-glow) !important;
+}
+
+.xiaohan-icon {
+  color: var(--frost-color-1) !important;
+  text-shadow: 0 0 5px var(--frost-glow) !important;
+}
+
+@keyframes hanluGlowPulse {
+  0% { opacity: 0.2; transform: scale(0.8) rotate(0deg); filter: blur(5px); }
+  50% { opacity: 0.4; transform: scale(1.2) rotate(180deg); filter: blur(10px); }
+  100% { opacity: 0.2; transform: scale(0.8) rotate(360deg); filter: blur(5px); }
+}
+
+.hanlu-glow-effect-1 {
+  top: 15%;
+  left: 25%;
+  animation-delay: 0s;
+}
+
+.hanlu-glow-effect-2 {
+  bottom: 25%;
+  right: 15%;
+  animation-delay: 5s;
+  transform: scale(1.3);
+}
+.autumn-leaf-4 { top: 6%; left: 55%; animation-delay: 1.5s; }
+.autumn-leaf-5 { top: 10%; left: 70%; animation-delay: 0.5s; }
+.autumn-leaf-6 { top: 12%; left: 85%; animation-delay: 2.5s; }
+.autumn-leaf-7 { top: 7%; left: 15%; animation-delay: 3s; }
+.autumn-leaf-8 { top: 9%; left: 30%; animation-delay: 2s; }
+.autumn-leaf-9 { top: 4%; left: 45%; animation-delay: 1s; }
+.autumn-leaf-10 { top: 11%; left: 60%; animation-delay: 0s; }
+.autumn-leaf-11 { top: 6%; left: 75%; animation-delay: 1.2s; }
+.autumn-leaf-12 { top: 9%; left: 90%; animation-delay: 2.2s; }
+
+/* 寒露特有的雾气元素 */
+.hanlu-mist {
+  position: absolute;
+  width: 100px;
+  height: 60px;
+  background: radial-gradient(ellipse at center, rgba(106, 133, 182, 0.4) 0%, rgba(106, 133, 182, 0.1) 70%, transparent 100%);
+  border-radius: 50%;
+  filter: blur(8px);
+  opacity: 0.6;
+  animation: mistFloat 15s ease-in-out infinite;
+}
+
+.hanlu-mist-1 {
+  bottom: 20%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.hanlu-mist-2 {
+  bottom: 30%;
+  right: 15%;
+  animation-delay: 7s;
+  transform: scale(1.2);
+}
+
+@keyframes mistFloat {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translateY(-20px) scale(1.1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.4;
+  }
+}
+
+/* 小寒主题组件中的雪花效果 */
+.snowflakes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.snowflake {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-image: url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 10 10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 0 L6 3.5 L9.5 5 L6 6.5 L5 10 L4 6.5 L0.5 5 L4 3.5 Z' fill='rgba(169, 169, 169, 0.7)' /%3E%3C/svg%3E");
+  opacity: 0;
+  animation: floatSnow 6s linear infinite;
+}
+
+.snowflake-1 { top: 3%; left: 7%; animation-delay: 0s; }
+.snowflake-2 { top: 5%; left: 20%; animation-delay: 1s; }
+.snowflake-3 { top: 2%; left: 35%; animation-delay: 2s; }
+.snowflake-4 { top: 4%; left: 50%; animation-delay: 1.5s; }
+.snowflake-5 { top: 6%; left: 65%; animation-delay: 0.5s; }
+.snowflake-6 { top: 8%; left: 80%; animation-delay: 2.5s; }
+.snowflake-7 { top: 10%; left: 12%; animation-delay: 3s; }
+.snowflake-8 { top: 7%; left: 27%; animation-delay: 2s; }
+.snowflake-9 { top: 9%; left: 42%; animation-delay: 1s; }
+.snowflake-10 { top: 3%; left: 57%; animation-delay: 0s; }
+.snowflake-11 { top: 5%; left: 72%; animation-delay: 1.5s; }
+.snowflake-12 { top: 7%; left: 87%; animation-delay: 2.5s; }
+.snowflake-13 { top: 4%; left: 22%; animation-delay: 0.8s; }
+.snowflake-14 { top: 6%; left: 38%; animation-delay: 1.8s; }
+.snowflake-15 { top: 8%; left: 78%; animation-delay: 2.8s; }
+
+/* 小寒特有的冰晶元素 */
+.xiaohan-frost {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 0 L20 40 M0 20 L40 20 M5 5 L35 35 M5 35 L35 5' stroke='rgba(220, 240, 255, 0.7)' stroke-width='1' fill='none' /%3E%3C/svg%3E");
+  opacity: 0.5;
+  animation: enhancedFrostGrow 10s ease-in-out infinite;
+  transform-origin: center;
+  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.4));
+}
+
+/* 小寒特有的冰晶光晕 */
+.xiaohan-frost-glow {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--frost-color-1) 0%, var(--frost-color-2) 40%, transparent 70%);
+  opacity: 0.5;
+  animation: frostGlowPulse 6s ease-in-out infinite;
+  transform-origin: center;
+  filter: blur(2px);
+}
+
+/* 导航栏中的节气元素样式 */
+.header-dew-drop-1, .header-dew-drop-2 {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  animation-duration: 3s;
+}
+
+.header-dew-drop-1 {
+  top: 10px;
+  right: 15px;
+}
+
+.header-dew-drop-2 {
+  top: 20px;
+  right: 30px;
+  animation-delay: 1.5s;
+}
+
+.header-glow-effect {
+  width: 60px;
+  height: 60px;
+  top: 10px;
+  right: 20px;
+  z-index: -1;
+}
+
+.header-leaf-1, .header-leaf-2, .header-leaf-3 {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  animation-duration: 4s;
+}
+
+.header-leaf-1 {
+  top: 5px;
+  right: 15px;
+}
+
+.header-leaf-2 {
+  top: 15px;
+  right: 30px;
+  animation-delay: 1s;
+}
+
+.header-leaf-3 {
+  top: 25px;
+  right: 20px;
+  animation-delay: 2s;
+}
+
+.header-frost-1 {
+  width: 25px;
+  height: 25px;
+  top: 15px;
+  right: 25px;
+}
+
+.header-frost-glow-1, .header-frost-glow-2 {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+}
+
+.header-frost-glow-1 {
+  top: 10px;
+  right: 15px;
+}
+
+.header-frost-glow-2 {
+  top: 25px;
+  right: 35px;
+  animation-delay: 3s;
+}
+
+@keyframes frostGlowPulse {
+  0% { opacity: 0.3; transform: scale(0.8); filter: blur(1px); }
+  50% { opacity: 0.7; transform: scale(1.2); filter: blur(3px); }
+  100% { opacity: 0.3; transform: scale(0.8); filter: blur(1px); }
+}
+
+.xiaohan-frost-1 {
+  top: 30%;
+  left: 20%;
+  animation-delay: 0s;
+}
+
+.xiaohan-frost-2 {
+  top: 40%;
+  right: 25%;
+  animation-delay: 5s;
+  transform: scale(0.8) rotate(45deg);
+}
+
+@keyframes frostGrow {
+  0% {
+    transform: scale(0.2) rotate(0deg);
+    opacity: 0;
+    filter: drop-shadow(0 0 2px var(--frost-color-1));
+  }
+  50% {
+    transform: scale(1) rotate(45deg);
+    opacity: 0.5;
+    filter: drop-shadow(0 0 6px var(--frost-color-1));
+  }
+  100% {
+    transform: scale(0.2) rotate(90deg);
+    opacity: 0;
+    filter: drop-shadow(0 0 2px var(--frost-color-1));
+  }
+}
+
+/* 改进的冰晶生长动画 */
+@keyframes enhancedFrostGrow {
+  0% {
+    transform: scale(0.7) rotate(0deg);
+    opacity: 0.4;
+    filter: drop-shadow(0 0 2px rgba(220, 240, 255, 0.3));
+  }
+  25% {
+    transform: scale(0.9) rotate(22.5deg);
+    opacity: 0.6;
+    filter: drop-shadow(0 0 4px rgba(220, 240, 255, 0.5));
+  }
+  50% {
+    transform: scale(1.3) rotate(45deg);
+    opacity: 0.9;
+    filter: drop-shadow(0 0 6px rgba(220, 240, 255, 0.7));
+  }
+  75% {
+    transform: scale(0.9) rotate(67.5deg);
+    opacity: 0.6;
+    filter: drop-shadow(0 0 4px rgba(220, 240, 255, 0.5));
+  }
+  100% {
+    transform: scale(0.7) rotate(90deg);
+    opacity: 0.4;
+    filter: drop-shadow(0 0 2px rgba(220, 240, 255, 0.3));
+  }
+}
+
+@keyframes floatSnow {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.3;
+    transform: translate(10px, 20px) rotate(30deg);
+  }
+  35% {
+    opacity: 0.7;
+    transform: translate(-5px, 40px) rotate(60deg);
+  }
+  65% {
+    opacity: 0.8;
+    transform: translate(15px, 70px) rotate(120deg);
+  }
+  85% {
+    opacity: 0.5;
+    transform: translate(5px, 90px) rotate(150deg);
+  }
+  100% {
+    transform: translate(-10px, 120px) rotate(180deg);
+    opacity: 0;
+  }
+}
+
+/* 白露节气浮动元素 */
+.theme-bailu .seasonal-particle {
+  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 10 L12 8 L10 6 L8 8 Z' stroke='rgba(168, 160, 122, 0.4)' fill='none' /%3E%3C/svg%3E");
+  animation: floatElement 15s ease-in-out infinite;
+}
+
+/* 白露节气浮动露珠元素 */
+.theme-bailu .seasonal-floating-elements::before,
+.theme-bailu .seasonal-floating-elements::after,
+.bailu-elements::before,
+.bailu-elements::after {
+  content: '';
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(168, 160, 122, 0.8) 0%, rgba(168, 160, 122, 0.1) 70%, transparent 100%);
+  box-shadow: 0 0 5px rgba(168, 160, 122, 0.5), inset 0 0 2px rgba(255, 255, 255, 0.8);
+  pointer-events: none;
+  z-index: 1;
+  backdrop-filter: blur(1px);
+}
+
+.theme-bailu .seasonal-floating-elements::before,
+.bailu-elements::before {
+  top: 20%;
+  left: 15%;
+  animation: floatDew 20s ease-in-out infinite;
+}
+
+.theme-bailu .seasonal-floating-elements::after,
+.bailu-elements::after {
+  top: 60%;
+  right: 10%;
+  animation: floatDew 25s ease-in-out 5s infinite;
+}
+
+/* 添加更多白露露珠效果 */
+.theme-bailu .seasonal-floating-elements,
+.bailu-elements {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.theme-bailu .seasonal-floating-elements::nth-child(1),
+.theme-bailu .seasonal-floating-elements::nth-child(2) {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(168, 160, 122, 0.9) 0%, rgba(168, 160, 122, 0.2) 70%, transparent 100%);
+  box-shadow: 0 0 8px rgba(168, 160, 122, 0.6), inset 0 0 3px rgba(255, 255, 255, 0.6);
+  top: 40%;
+  left: 30%;
+  animation: floatDew 18s ease-in-out 2s infinite;
+}
+
+.theme-bailu .seasonal-floating-elements::nth-child(2) {
+  width: 5px;
+  height: 5px;
+  top: 25%;
+  left: 65%;
+  animation: floatDew 22s ease-in-out 7s infinite;
+}
+
+@keyframes floatDew {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.8;
+    transform: translate(10px, 10px) scale(1.2);
+  }
+  80% {
+    opacity: 0.6;
+    transform: translate(20px, 30px) scale(0.8);
+  }
+  100% {
+    transform: translate(30px, 50px) scale(0.5);
+    opacity: 0;
+  }
+}
+
+/* 白露露珠滴落动画 */
+@keyframes dewDrop {
+  0% {
+    transform: translateY(0) scale(1) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.9;
+  }
+  30% {
+    transform: translateY(10px) scale(1.2) rotate(-2deg);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(20px) scale(1.1) rotate(2deg);
+    opacity: 0.7;
+  }
+  70% {
+    transform: translateY(35px) scale(0.9) rotate(-1deg);
+    opacity: 0.5;
+  }
+  90% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(50px) scale(0.8) rotate(0deg);
+    opacity: 0;
+  }
+}
+
+/* 白露露珠滴落效果 - 增强版 */
+.theme-bailu .dew-drops {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.theme-bailu .dew-drop {
+  position: absolute;
+  width: 4px;
+  height: 8px;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  background: radial-gradient(ellipse at top, rgba(255, 255, 255, 0.8) 0%, rgba(168, 160, 122, 0.6) 60%, rgba(168, 160, 122, 0.3) 100%);
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.3), inset 0 0 2px rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  animation: dewDrop 4s ease-in-out infinite;
+  transform-origin: center top;
+  filter: drop-shadow(0 0 3px rgba(168, 160, 122, 0.4));
+}
+
+.theme-bailu .dew-drop:nth-child(1) {
+  top: 10%;
+  left: 20%;
+  animation-delay: 0s;
+}
+
+.theme-bailu .dew-drop:nth-child(2) {
+  top: 15%;
+  left: 50%;
+  animation-delay: 1.5s;
+}
+
+.theme-bailu .dew-drop:nth-child(3) {
+  top: 8%;
+  left: 75%;
+  animation-delay: 3s;
+}
+
+.theme-bailu .dew-drop:nth-child(4) {
+  top: 12%;
+  left: 35%;
+  animation-delay: 2.5s;
+  transform: scale(0.8);
+}
+
+.theme-bailu .dew-drop:nth-child(5) {
+  top: 5%;
+  left: 60%;
+  animation-delay: 4s;
+  transform: scale(0.7);
+}
+
+/* 白露节气背景装饰 */
+.theme-bailu .seasonal-background::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 10 L32 15 L37 15 L33 19 L35 24 L30 21 L25 24 L27 19 L23 15 L28 15 Z' stroke='rgba(168, 160, 122, 0.1)' fill='none' /%3E%3C/svg%3E");
+  background-size: 60px 60px;
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* 寒露节气背景装饰 */
+.theme-hanlu .seasonal-background::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 10 Q60 40 40 70 Q20 40 40 10 Z' stroke='rgba(106, 133, 182, 0.1)' fill='none' /%3E%3C/svg%3E");
+  background-size: 80px 80px;
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* 寒露节气浮动元素 */
+.theme-hanlu .seasonal-particle {
+  background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 5 Q25 15 15 25 Q5 15 15 5 Z' stroke='rgba(106, 133, 182, 0.4)' fill='none' /%3E%3C/svg%3E");
+  animation: floatElement 20s ease-in-out infinite;
+}
+
+/* 寒露节气浮动雾气元素 */
+.theme-hanlu .seasonal-floating-elements::before,
+.theme-hanlu .seasonal-floating-elements::after {
+  content: '';
+  position: fixed;
+  background: radial-gradient(ellipse, rgba(106, 133, 182, 0.3) 0%, rgba(106, 133, 182, 0.1) 50%, transparent 100%);
+  border-radius: 50%;
+  filter: blur(8px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.theme-hanlu .seasonal-floating-elements::before {
+  width: 150px;
+  height: 80px;
+  top: 30%;
+  left: 10%;
+  animation: floatMist 35s ease-in-out infinite;
+}
+
+.theme-hanlu .seasonal-floating-elements::after {
+  width: 120px;
+  height: 60px;
+  bottom: 20%;
+  right: 15%;
+  animation: floatMist 40s ease-in-out 10s infinite;
+}
+
+/* 寒露秋叶飘落效果 */
+.theme-hanlu .autumn-leaves {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.theme-hanlu .autumn-leaf {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background-image: url("data:image/svg+xml,%3Csvg width='15' height='15' viewBox='0 0 15 15' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.5 1 C11 3 13 7.5 7.5 14 C2 7.5 4 3 7.5 1 Z' fill='rgba(106, 133, 182, 0.6)' /%3E%3C/svg%3E");
+  opacity: 0;
+  animation: fallLeaf 10s ease-in-out infinite;
+  filter: drop-shadow(0 0 2px rgba(106, 133, 182, 0.4));
+}
+
+.theme-hanlu .autumn-leaf:nth-child(1) {
+  top: -5%;
+  left: 20%;
+  animation-delay: 0s;
+}
+
+.theme-hanlu .autumn-leaf:nth-child(2) {
+  top: -8%;
+  left: 50%;
+  animation-delay: 2s;
+  transform: scale(0.9) rotate(45deg);
+}
+
+.theme-hanlu .autumn-leaf:nth-child(3) {
+  top: -3%;
+  left: 70%;
+  animation-delay: 4s;
+  transform: scale(1.1) rotate(-30deg);
+}
+
+.theme-hanlu .autumn-leaf:nth-child(4) {
+  top: -10%;
+  left: 35%;
+  animation-delay: 6s;
+  transform: scale(0.8) rotate(15deg);
+}
+
+.theme-hanlu .autumn-leaf:nth-child(5) {
+  top: -7%;
+  left: 85%;
+  animation-delay: 3s;
+  transform: scale(0.85) rotate(-60deg);
+}
+
+.theme-hanlu .autumn-leaf:nth-child(6) {
+  top: -12%;
+  left: 10%;
+  animation-delay: 5s;
+  transform: scale(1.2) rotate(75deg);
+}
+
+@keyframes fallLeaf {
+  0% {
+    transform: translateY(0) rotate(0deg) scale(0.8);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  30% {
+    transform: translateY(30vh) rotate(90deg) translateX(30px) scale(0.9);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(50vh) rotate(180deg) translateX(50px) scale(1);
+    opacity: 0.6;
+  }
+  70% {
+    transform: translateY(70vh) rotate(270deg) translateX(20px) scale(0.9);
+    opacity: 0.5;
+  }
+  90% {
+    opacity: 0.4;
+    transform: translateY(90vh) rotate(330deg) translateX(-10px) scale(0.8);
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg) translateX(-20px) scale(0.7);
+    opacity: 0;
+  }
+}
+
+@keyframes floatMist {
+  0% {
+    transform: translate(0, 0) scale(0.8) rotate(0deg);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.5;
+    transform: translate(30px, -10px) scale(1.2) rotate(5deg);
+  }
+  70% {
+    opacity: 0.3;
+    transform: translate(60px, 20px) scale(0.9) rotate(-5deg);
+  }
+  100% {
+    transform: translate(100px, 0) scale(0.7) rotate(0deg);
+    opacity: 0;
+  }
+}
+
+/* 小寒节气背景装饰 */
+.theme-xiaohan .seasonal-background::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 5 L22 12 L29 12 L23 17 L25 24 L20 19 L15 24 L17 17 L11 12 L18 12 Z' stroke='rgba(169, 169, 169, 0.1)' fill='none' /%3E%3C/svg%3E");
+  background-size: 40px 40px;
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* 小寒节气浮动元素 */
+.theme-xiaohan .seasonal-particle {
+  background-image: url("data:image/svg+xml,%3Csvg width='15' height='15' viewBox='0 0 15 15' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.5 1 L8.5 4 L11.5 4 L9 6 L10 9 L7.5 7 L5 9 L6 6 L3.5 4 L6.5 4 Z' stroke='rgba(169, 169, 169, 0.4)' fill='none' /%3E%3C/svg%3E");
+  animation: floatSnow 10s ease-in-out infinite;
+}
+
+/* 小寒节气雪花飘落效果 - 增强版 */
+.theme-xiaohan .seasonal-floating-elements::before,
+.theme-xiaohan .seasonal-floating-elements::after {
+  content: '';
+  position: fixed;
+  pointer-events: none;
+  z-index: 1;
+  filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.3));
+}
+
+.theme-xiaohan .seasonal-floating-elements::before {
+  top: -50px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.3) 50%, transparent 70%),
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.3) 50%, transparent 70%),
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.3) 50%, transparent 70%);
+  background-size: 12px 12px, 8px 8px, 6px 6px;
+  background-position: 0% 0%, 50% 50%, 100% 100%;
+  animation: snowfall 15s linear infinite;
+  opacity: 0.4;
+}
+
+.theme-xiaohan .seasonal-floating-elements::after {
+  top: -30px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.3) 50%, transparent 70%),
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.3) 50%, transparent 70%);
+  background-size: 10px 10px, 7px 7px;
+  background-position: 30% 30%, 70% 70%;
+  animation: snowfall 12s linear infinite;
+  animation-delay: 2s;
+  opacity: 0.3;
+}
+
+/* 小寒冰晶效果 */
+.theme-xiaohan .seasonal-floating-elements::nth-child(1),
+.theme-xiaohan .seasonal-floating-elements::nth-child(2) {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 0 L10 20 M0 10 L20 10 M3 3 L17 17 M3 17 L17 3' stroke='rgba(255, 255, 255, 0.6)' stroke-width='1' fill='none' /%3E%3C/svg%3E");
+  opacity: 0.7;
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+  top: 30%;
+  left: 20%;
+  animation: floatIceCrystal 25s ease-in-out infinite;
+}
+
+.theme-xiaohan .seasonal-floating-elements::nth-child(2) {
+  width: 15px;
+  height: 15px;
+  top: 60%;
+  left: 70%;
+  animation: floatIceCrystal 20s ease-in-out 5s infinite;
+}
+
+@keyframes floatIceCrystal {
+  0% {
+    transform: translate(0, 0) rotate(0deg) scale(0.8);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.7;
+    transform: translate(20px, -10px) rotate(45deg) scale(1);
+  }
+  50% {
+    transform: translate(40px, 20px) rotate(90deg) scale(1.2);
+    opacity: 0.5;
+  }
+  80% {
+    opacity: 0.7;
+    transform: translate(20px, 40px) rotate(135deg) scale(1);
+  }
+  100% {
+    transform: translate(0, 60px) rotate(180deg) scale(0.8);
+    opacity: 0;
+  }
+}
+
+/* 小寒雪花飘落增强效果 */
+.theme-xiaohan .snowflakes {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.theme-xiaohan .snowflake {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-image: url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 10 10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 0 L6 3.5 L9.5 5 L6 6.5 L5 10 L4 6.5 L0.5 5 L4 3.5 Z' fill='rgba(255, 255, 255, 0.8)' /%3E%3C/svg%3E");
+  opacity: 0;
+  animation: fallSnowflake 8s ease-in-out infinite;
+  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.5));
+}
+
+.theme-xiaohan .snowflake:nth-child(1) {
+  top: -5%;
+  left: 15%;
+  animation-delay: 0s;
+  transform: scale(1.2);
+}
+
+.theme-xiaohan .snowflake:nth-child(2) {
+  top: -8%;
+  left: 45%;
+  animation-delay: 1.5s;
+  transform: scale(0.9);
+}
+
+.theme-xiaohan .snowflake:nth-child(3) {
+  top: -3%;
+  left: 65%;
+  animation-delay: 3s;
+  transform: scale(1.1);
+}
+
+.theme-xiaohan .snowflake:nth-child(4) {
+  top: -10%;
+  left: 30%;
+  animation-delay: 4.5s;
+  transform: scale(0.8);
+}
+
+.theme-xiaohan .snowflake:nth-child(5) {
+  top: -7%;
+  left: 80%;
+  animation-delay: 6s;
+  transform: scale(1);
+}
+
+.theme-xiaohan .snowflake:nth-child(6) {
+  top: -9%;
+  left: 5%;
+  animation-delay: 2s;
+  transform: scale(0.7);
+}
+
+.theme-xiaohan .snowflake:nth-child(7) {
+  top: -6%;
+  left: 55%;
+  animation-delay: 3.5s;
+  transform: scale(1.3);
+}
+
+.theme-xiaohan .snowflake:nth-child(8) {
+  top: -4%;
+  left: 90%;
+  animation-delay: 5s;
+  transform: scale(0.85);
+}
+
+@keyframes fallSnowflake {
+  0% {
+    transform: translateY(0) rotate(0deg) scale(0.8);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.9;
+  }
+  25% {
+    transform: translateY(25vh) rotate(90deg) translateX(15px) scale(0.9);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(50vh) rotate(180deg) translateX(30px) scale(1);
+    opacity: 0.7;
+  }
+  75% {
+    transform: translateY(75vh) rotate(270deg) translateX(10px) scale(0.8);
+    opacity: 0.5;
+  }
+  90% {
+    opacity: 0.3;
+    transform: translateY(90vh) rotate(330deg) translateX(-10px) scale(0.7);
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg) translateX(-20px) scale(0.6);
+    opacity: 0;
+  }
+}
+
+@keyframes snowfall {
+  0% {
+    background-position: 0% -10%, 50% -20%, 100% -10%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.4;
+  }
+  100% {
+    background-position: 10% 110%, 60% 120%, 90% 110%;
+    opacity: 0;
+  }
+}
+
+/* 季节性光晕效果 */
+.seasonal-glow {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--seasonal-glow-color) 0%, transparent 70%);
+  opacity: 0.5;
+  filter: blur(5px);
+  pointer-events: none;
+  z-index: 0;
+  animation: pulseGlow 4s ease-in-out infinite alternate;
+}
+
+/* 节气特定光晕效果 */
+.theme-bailu .seasonal-glow {
+  background: radial-gradient(circle, rgba(168, 160, 122, 0.3) 0%, transparent 70%);
+}
+
+.theme-hanlu .seasonal-glow {
+  background: radial-gradient(circle, rgba(106, 133, 182, 0.3) 0%, transparent 70%);
+}
+
+.theme-xiaohan .seasonal-glow {
+  background: radial-gradient(circle, rgba(169, 169, 169, 0.3) 0%, transparent 70%);
+}
+
+@keyframes pulseGlow {
+  0% {
+    opacity: 0.3;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 0.7;
+    transform: scale(1.1);
+  }
+}
+
+/* 季节性分隔线 */
+.seasonal-divider {
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(90deg, transparent, var(--seasonal-accent-color), transparent);
+  position: relative;
+  margin: 0 auto;
+  overflow: visible;
+}
+
+.seasonal-divider::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--seasonal-accent-color);
+  box-shadow: 0 0 8px var(--seasonal-accent-color);
+  animation: pulseDividerDot 3s ease-in-out infinite;
+}
+
+.seasonal-divider::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, var(--seasonal-accent-color), transparent);
+  opacity: 0.5;
+  filter: blur(3px);
+  animation: shimmerDivider 4s ease-in-out infinite;
+}
+
+@keyframes pulseDividerDot {
+  0%, 100% {
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(-50%) scale(1.3);
+    opacity: 0.7;
+  }
+}
+
+@keyframes shimmerDivider {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scaleX(0.95);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scaleX(1.05);
+  }
+}
+
+/* 节气特定导航栏装饰 */
+.theme-bailu .seasonal-accent-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(168, 160, 122, 0.7), transparent);
+  animation: shimmerAccent 4s ease-in-out infinite;
+}
+
+.theme-hanlu .seasonal-accent-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(106, 133, 182, 0.7), transparent);
+  animation: shimmerAccent 4s ease-in-out infinite;
+}
+
+.theme-xiaohan .seasonal-accent-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(169, 169, 169, 0.7), transparent);
+  animation: shimmerAccent 4s ease-in-out infinite;
+}
+
+@keyframes shimmerAccent {
+  0%, 100% {
+    opacity: 0.5;
+    filter: blur(1px);
+  }
+  50% {
+    opacity: 0.8;
+    filter: blur(0.5px);
+  }
+}
+
+/* 节气特定导航栏装饰元素 */
+.seasonal-header-decoration {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.seasonal-icon {
+  position: absolute;
+  font-size: 1.5rem;
+  opacity: 0.7;
+  filter: drop-shadow(0 0 5px rgba(var(--color-primary-accent), 0.5));
+  animation: floatHeaderIcon 5s ease-in-out infinite;
+}
+
+.bailu-decoration .seasonal-icon {
+  top: 10px;
+  right: 20px;
+}
+
+.hanlu-decoration .seasonal-icon {
+  top: 15px;
+  right: 25px;
+}
+
+.xiaohan-decoration .seasonal-icon {
+  top: 12px;
+  right: 22px;
+}
+
+@keyframes floatHeaderIcon {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(10deg);
+  }
+}
+
+/* 导航栏节气粒子效果 */
+.seasonal-header-particles {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100px;
+  height: 100%;
+  pointer-events: none;
+}
+
+.seasonal-header-particles span {
+  position: absolute;
+  display: block;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+/* 白露导航栏粒子 */
+.bailu-decoration .seasonal-header-particles span {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(168, 160, 122, 0.9) 0%, rgba(168, 160, 122, 0.2) 70%, transparent 100%);
+  box-shadow: 0 0 4px rgba(168, 160, 122, 0.5);
+  animation: floatHeaderParticle 6s ease-in-out infinite;
+}
+
+/* 寒露导航栏粒子 */
+.hanlu-decoration .seasonal-header-particles span {
+  width: 8px;
+  height: 8px;
+  background-image: url("data:image/svg+xml,%3Csvg width='8' height='8' viewBox='0 0 8 8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 1 C6 2 7 4 4 7 C1 4 2 2 4 1 Z' fill='rgba(106, 133, 182, 0.6)' /%3E%3C/svg%3E");
+  animation: floatHeaderLeaf 7s ease-in-out infinite;
+}
+
+/* 小寒导航栏粒子 */
+.xiaohan-decoration .seasonal-header-particles span {
+  width: 6px;
+  height: 6px;
+  background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3 0 L4 2 L6 3 L4 4 L3 6 L2 4 L0 3 L2 2 Z' fill='rgba(169, 169, 169, 0.6)' /%3E%3C/svg%3E");
+  animation: floatHeaderSnow 5s ease-in-out infinite;
+}
+
+/* 导航栏粒子位置 */
+.seasonal-header-particles span:nth-child(1) {
+  top: 15%;
+  right: 40px;
+  animation-delay: 0s;
+}
+
+.seasonal-header-particles span:nth-child(2) {
+  top: 40%;
+  right: 60px;
+  animation-delay: 1.5s;
+}
+
+.seasonal-header-particles span:nth-child(3) {
+  top: 65%;
+  right: 30px;
+  animation-delay: 3s;
+}
+
+@keyframes floatHeaderParticle {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(-15px, 0);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate(-30px, 0);
+    opacity: 0;
+  }
+}
+
+@keyframes floatHeaderLeaf {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(-20px, 5px) rotate(180deg);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate(-40px, 0) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes floatHeaderSnow {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(-15px, 5px) rotate(90deg);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate(-30px, 10px) rotate(180deg);
+    opacity: 0;
+  }
+}
+
+/* 节气特定页脚装饰元素 */
+.seasonal-footer-decoration {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.seasonal-footer-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+  opacity: 0.8;
+  filter: drop-shadow(0 0 5px rgba(var(--color-primary-accent), 0.5));
+  animation: pulseFooterIcon 4s ease-in-out infinite;
+}
+
+@keyframes pulseFooterIcon {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 1;
+  }
+}
+
+/* 页脚粒子效果 */
+.seasonal-footer-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.seasonal-footer-particles span {
+  position: absolute;
+  display: block;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+/* 白露页脚粒子 */
+.bailu-particles span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(168, 160, 122, 0.9) 0%, rgba(168, 160, 122, 0.2) 70%, transparent 100%);
+  box-shadow: 0 0 5px rgba(168, 160, 122, 0.5);
+  animation: floatFooterParticle 5s ease-in-out infinite;
+}
+
+/* 寒露页脚粒子 */
+.hanlu-particles span {
+  width: 10px;
+  height: 10px;
+  background-image: url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 10 10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 1 C7 2 8 5 5 9 C2 5 3 2 5 1 Z' fill='rgba(106, 133, 182, 0.6)' /%3E%3C/svg%3E");
+  animation: fallFooterLeaf 6s ease-in-out infinite;
+}
+
+/* 小寒页脚粒子 */
+.xiaohan-particles span {
+  width: 8px;
+  height: 8px;
+  background-image: url("data:image/svg+xml,%3Csvg width='8' height='8' viewBox='0 0 8 8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 0 L5 3 L8 4 L5 5 L4 8 L3 5 L0 4 L3 3 Z' fill='rgba(169, 169, 169, 0.6)' /%3E%3C/svg%3E");
+  animation: fallFooterSnow 5s ease-in-out infinite;
+}
+
+/* 页脚粒子位置 */
+.seasonal-footer-particles span:nth-child(1) {
+  left: 20%;
+  animation-delay: 0s;
+}
+
+.seasonal-footer-particles span:nth-child(2) {
+  left: 40%;
+  animation-delay: 1s;
+}
+
+.seasonal-footer-particles span:nth-child(3) {
+  left: 60%;
+  animation-delay: 2s;
+}
+
+.seasonal-footer-particles span:nth-child(4) {
+  left: 80%;
+  animation-delay: 1.5s;
+}
+
+.seasonal-footer-particles span:nth-child(5) {
+  left: 30%;
+  animation-delay: 0.5s;
+}
+
+@keyframes floatFooterParticle {
+  0% {
+    top: -10px;
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    top: 30px;
+    opacity: 0;
+  }
+}
+
+@keyframes fallFooterLeaf {
+  0% {
+    top: -10px;
+    transform: rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    transform: rotate(180deg);
+    opacity: 0.7;
+  }
+  100% {
+    top: 30px;
+    transform: rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes fallFooterSnow {
+  0% {
+    top: -10px;
+    transform: rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    transform: rotate(90deg);
+    opacity: 0.7;
+  }
+  100% {
+    top: 30px;
+    transform: rotate(180deg);
+    opacity: 0;
+  }
+}
+
+/* 节气特定背景图案 */
+.theme-bailu .seasonal-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 20 Q70 50 50 80 Q30 50 50 20 Z' stroke='rgba(168, 160, 122, 0.2)' fill='none' /%3E%3C/svg%3E");
+  background-size: 100px 100px;
+}
+
+.theme-hanlu .seasonal-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 30 L50 20 L70 30 L70 70 L50 80 L30 70 Z' stroke='rgba(106, 133, 182, 0.2)' fill='none' /%3E%3C/svg%3E");
+  background-size: 100px 100px;
+}
+
+.theme-xiaohan .seasonal-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 20 L55 35 L70 35 L60 45 L65 60 L50 50 L35 60 L40 45 L30 35 L45 35 Z' stroke='rgba(169, 169, 169, 0.2)' fill='none' /%3E%3C/svg%3E");
+  background-size: 100px 100px;
+}
+
+/* 节气卡片悬浮效果 */
+.theme-card.active::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    from 0deg,
+    rgba(var(--color-primary-accent), 0) 0%,
+    rgba(var(--color-primary-accent), 0.2) 25%,
+    rgba(var(--color-primary-accent), 0.3) 50%,
+    rgba(var(--color-primary-accent), 0.2) 75%,
+    rgba(var(--color-primary-accent), 0) 100%
+  );
+  animation: rotateCardGlow 8s linear infinite;
+  opacity: 1;
+  z-index: 0;
+  pointer-events: none;
+}
+
+@keyframes rotateCardGlow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

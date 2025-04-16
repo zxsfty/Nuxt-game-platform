@@ -8,6 +8,14 @@ module.exports = {
     "./nuxt.config.{js,ts}",
     "./app.vue",
   ],
+  safelist: [
+    'hover:shadow-theme'
+  ],
+  variants: {
+    extend: {
+      boxShadow: ['hover']
+    }
+  },
   theme: {
     extend: {
       colors: {
@@ -30,6 +38,9 @@ module.exports = {
       fontFamily: {
         sans: ['"Rajdhani"', 'sans-serif'],
         mono: ['"Major Mono Display"', 'monospace'],
+      },
+      boxShadow: {
+        'theme': '0 0 15px rgba(var(--color-primary-accent), 0.5)',
       },
     },
   },

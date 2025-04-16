@@ -248,6 +248,54 @@
     line-height: 1.4;
   }
   
+  /* 统一右下角按钮样式 */
+  .corner-button {
+    @apply bg-primary-dark/80 backdrop-blur-md p-2 rounded-full shadow-md border border-primary-accent/30 hover:shadow-theme transition-all duration-300 text-primary-light flex items-center justify-center;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    transform-origin: center;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .corner-button:hover {
+    @apply border-primary-accent/60;
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(var(--color-primary-accent), 0.6), 0 0 10px var(--seasonal-glow-color, rgba(var(--color-primary-accent), 0.4));
+  }
+  
+  /* 节气特定按钮样式 */
+  .bailu .corner-button {
+    box-shadow: 0 0 8px var(--dew-glow);
+    border-color: rgba(var(--dew-color-1), 0.3);
+  }
+  
+  .bailu .corner-button:hover {
+    box-shadow: 0 0 15px var(--dew-glow), 0 0 20px var(--dew-glow);
+    border-color: rgba(var(--dew-color-1), 0.6);
+  }
+  
+  .hanlu .corner-button {
+    box-shadow: 0 0 8px var(--leaf-glow);
+    border-color: rgba(var(--leaf-color-1), 0.3);
+  }
+  
+  .hanlu .corner-button:hover {
+    box-shadow: 0 0 15px var(--leaf-glow), 0 0 20px var(--leaf-glow);
+    border-color: rgba(var(--leaf-color-1), 0.6);
+  }
+  
+  .xiaohan .corner-button {
+    box-shadow: 0 0 8px var(--frost-glow);
+    border-color: rgba(var(--frost-color-1), 0.3);
+  }
+  
+  .xiaohan .corner-button:hover {
+    box-shadow: 0 0 15px var(--frost-glow), 0 0 20px var(--frost-glow);
+    border-color: rgba(var(--frost-color-1), 0.6);
+  }
+  
   .reduced-contrast {
     filter: contrast(0.95) brightness(1.05);
   }

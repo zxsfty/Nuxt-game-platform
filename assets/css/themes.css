@@ -1,0 +1,603 @@
+/* 节气主题样式 - 华丽升级版 */
+
+/* 白露主题 - 清新淡雅 - 增强版 */
+.theme-bailu {
+  /* 主色调 - 更丰富的金色调 */
+  --color-primary-dark: 245, 245, 245; /* 浅灰白色背景 */
+  --color-primary-light: 51, 51, 51; /* 深灰色文字 */
+  --color-primary-accent: 184, 172, 120; /* 增强金色强调 */
+  
+  /* 次要色调 - 更丰富的层次 */
+  --color-secondary-dark: 235, 235, 235; /* 浅灰色背景 */
+  --color-secondary-light: 102, 102, 102; /* 中灰色文字 */
+  --color-secondary-accent: 215, 190, 105; /* 更亮的金色强调 */
+  
+  /* 导航栏特定颜色 - 更华丽的效果 */
+  --nav-bg-color: 245, 245, 245, 0.2; /* 透明背景 */
+  --nav-text-color: 51, 51, 51; /* 文字颜色 */
+  --nav-accent-color: 184, 172, 120; /* 强调色 */
+  --nav-hover-color: 215, 190, 105; /* 悬停颜色 */
+  --nav-glow-color: 184, 172, 120, 0.5; /* 增强光晕颜色 */
+  
+  /* 装饰元素颜色 */
+  --decoration-color-1: 215, 190, 105; /* 主装饰色 */
+  --decoration-color-2: 184, 172, 120; /* 次装饰色 */
+  --decoration-glow: 215, 190, 105, 0.6; /* 装饰光晕 */
+  --border-decoration: 215, 190, 105, 0.8; /* 边框装饰色 */
+  --particle-color: 215, 190, 105, 0.7; /* 粒子效果颜色 */
+  --ornament-color: 230, 200, 110; /* 装饰纹样颜色 */
+  
+  /* 强调色 - 更丰富多彩 */
+  --color-neon-blue: 100, 149, 237; /* 矢车菊蓝 */
+  --color-neon-cyan: 135, 206, 235; /* 天蓝色 */
+  --color-neon-red: 205, 92, 92; /* 印度红 */
+  --color-neon-purple: 147, 112, 219; /* 中紫色 */
+  --color-neon-pink: 221, 160, 221; /* 梅红色 */
+  
+  /* 字体特性 */
+  --font-weight: 500; /* 增加字重 */
+  --letter-spacing: 0.03em; /* 增加字间距 */
+  --text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15), 0 0 2px rgba(215, 190, 105, 0.3); /* 增强文字阴影 */
+  
+  /* 背景和文字 */
+  background-color: rgb(var(--color-primary-dark));
+  color: rgb(var(--color-primary-light));
+  transition: all 0.5s ease;
+  background-image: url('/assets/images/bailu-bg.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-blend-mode: overlay;
+  letter-spacing: var(--letter-spacing);
+  font-weight: var(--font-weight);
+  text-shadow: var(--text-shadow);
+}
+
+/* 寒露主题 - 深邃蓝紫 - 华丽升级版 */
+.theme-hanlu {
+  /* 主色调 - 更深邃的蓝紫色调 */
+  --color-primary-dark: 184, 198, 219; /* 浅蓝灰色背景 */
+  --color-primary-light: 255, 255, 255; /* 白色文字 */
+  --color-primary-accent: 116, 143, 192; /* 增强蓝色强调 */
+  
+  /* 次要色调 - 更丰富的层次 */
+  --color-secondary-dark: 106, 133, 182; /* 蓝色背景 */
+  --color-secondary-light: 235, 235, 245; /* 浅灰色文字 */
+  --color-secondary-accent: 80, 140, 190; /* 更亮的钢蓝色强调 */
+  
+  /* 导航栏特定颜色 - 更华丽的效果 */
+  --nav-bg-color: 106, 133, 182, 0.3; /* 增强透明背景 */
+  --nav-text-color: 255, 255, 255; /* 文字颜色 */
+  --nav-accent-color: 116, 143, 192; /* 强调色 */
+  --nav-hover-color: 80, 140, 190; /* 悬停颜色 */
+  --nav-glow-color: 116, 143, 192, 0.5; /* 增强光晕颜色 */
+  
+  /* 装饰元素颜色 */
+  --decoration-color-1: 80, 140, 190; /* 主装饰色 */
+  --decoration-color-2: 116, 143, 192; /* 次装饰色 */
+  --decoration-glow: 80, 140, 190, 0.6; /* 装饰光晕 */
+  --border-decoration: 80, 140, 190, 0.8; /* 边框装饰色 */
+  --particle-color: 80, 140, 190, 0.7; /* 粒子效果颜色 */
+  --ornament-color: 100, 160, 210; /* 装饰纹样颜色 */
+  
+  /* 强调色 - 更丰富多彩 */
+  --color-neon-blue: 70, 130, 180; /* 钢蓝色 */
+  --color-neon-cyan: 95, 158, 160; /* 军蓝色 */
+  --color-neon-red: 178, 34, 34; /* 火砖色 */
+  --color-neon-purple: 116, 100, 215; /* 增强石板蓝 */
+  --color-neon-pink: 229, 122, 157; /* 增强浅珊瑚色 */
+  
+  /* 字体特性 */
+  --font-weight: 500; /* 增加字重 */
+  --letter-spacing: 0.04em; /* 增加字间距 */
+  --text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 0 3px rgba(80, 140, 190, 0.3); /* 增强文字阴影 */
+  
+  /* 背景和文字 */
+  background-color: rgb(var(--color-primary-dark));
+  color: rgb(var(--color-primary-light));
+  transition: all 0.5s ease;
+  background-image: url('/assets/images/hanlu-bg.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-blend-mode: overlay;
+  letter-spacing: var(--letter-spacing);
+  font-weight: var(--font-weight);
+  text-shadow: var(--text-shadow);
+}
+
+/* 小寒主题 - 冬日雪景 - 华丽升级版 */
+.theme-xiaohan {
+  /* 主色调 - 更晶莹的冰雪色调 */
+  --color-primary-dark: 230, 233, 240; /* 浅蓝白色背景 */
+  --color-primary-light: 70, 70, 70; /* 深灰色文字 */
+  --color-primary-accent: 179, 179, 189; /* 增强银色强调 */
+  
+  /* 次要色调 - 更丰富的层次 */
+  --color-secondary-dark: 220, 220, 230; /* 浅紫灰色背景 */
+  --color-secondary-light: 105, 105, 105; /* 暗灰色文字 */
+  --color-secondary-accent: 202, 202, 212; /* 增强银色强调 */
+  
+  /* 导航栏特定颜色 - 更华丽的效果 */
+  --nav-bg-color: 230, 233, 240, 0.3; /* 增强透明背景 */
+  --nav-text-color: 70, 70, 70; /* 文字颜色 */
+  --nav-accent-color: 179, 179, 189; /* 强调色 */
+  --nav-hover-color: 202, 202, 212; /* 悬停颜色 */
+  --nav-glow-color: 179, 179, 189, 0.5; /* 增强光晕颜色 */
+  
+  /* 装饰元素颜色 */
+  --decoration-color-1: 202, 202, 212; /* 主装饰色 */
+  --decoration-color-2: 179, 179, 189; /* 次装饰色 */
+  --decoration-glow: 202, 202, 212, 0.6; /* 装饰光晕 */
+  --border-decoration: 202, 202, 212, 0.8; /* 边框装饰色 */
+  --particle-color: 202, 202, 212, 0.7; /* 粒子效果颜色 */
+  --ornament-color: 220, 220, 230; /* 装饰纹样颜色 */
+  --frost-sparkle: 255, 255, 255, 0.9; /* 霜花闪光效果 */
+  
+  /* 强调色 - 更丰富多彩 */
+  --color-neon-blue: 145, 216, 255; /* 增强浅天蓝色 */
+  --color-neon-cyan: 186, 234, 240; /* 增强粉蓝色 */
+  --color-neon-red: 230, 30, 70; /* 增强猩红色 */
+  --color-neon-purple: 196, 95, 221; /* 增强中兰花紫 */
+  --color-neon-pink: 255, 192, 203; /* 增强浅粉红 */
+  
+  /* 字体特性 */
+  --font-weight: 500; /* 增加字重 */
+  --letter-spacing: 0.05em; /* 增加字间距 */
+  --text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15), 0 0 3px rgba(202, 202, 212, 0.4); /* 增强文字阴影 */
+  
+  /* 背景和文字 */
+  background-color: rgb(var(--color-primary-dark));
+  color: rgb(var(--color-primary-light));
+  transition: all 0.5s ease;
+  background-image: url('/assets/images/xiaohan-bg.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-blend-mode: overlay;
+  letter-spacing: var(--letter-spacing);
+  font-weight: var(--font-weight);
+  text-shadow: var(--text-shadow);
+}
+
+/* 节气主题卡片样式覆盖 - 华丽升级版 */
+.theme-bailu .card,
+.theme-hanlu .card,
+.theme-xiaohan .card {
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(var(--border-decoration), 0.4);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(var(--decoration-color-1), 0.2), 0 0 5px rgba(var(--decoration-color-2), 0.1);
+  background-color: rgba(var(--color-primary-dark), 0.5);
+  border-radius: 8px;
+}
+
+/* 卡片内部装饰纹样 */
+.theme-bailu .card::before,
+.theme-hanlu .card::before,
+.theme-xiaohan .card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: radial-gradient(circle, rgba(var(--decoration-color-1), 0.15) 0%, transparent 70%);
+  opacity: 0;
+  transform: scale(0.5);
+  transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+  z-index: 0;
+  background-blend-mode: overlay;
+  mix-blend-mode: soft-light;
+}
+
+.theme-bailu .card:hover,
+.theme-hanlu .card:hover,
+.theme-xiaohan .card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(var(--decoration-color-1), 0.4), 0 0 10px rgba(var(--decoration-glow), 0.3);
+  border-color: rgba(var(--border-decoration), 0.7);
+}
+
+.theme-bailu .card::before,
+.theme-hanlu .card::before,
+.theme-xiaohan .card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(var(--decoration-color-1), 0.15) 0%, transparent 70%);
+  opacity: 0;
+  transform: scale(0.5);
+  transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.theme-bailu .card:hover::before,
+.theme-hanlu .card:hover::before,
+.theme-xiaohan .card:hover::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* 卡片装饰元素 */
+.theme-bailu .card::after,
+.theme-hanlu .card::after,
+.theme-xiaohan .card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(var(--decoration-color-1), 0.7), transparent);
+  opacity: 0.6;
+  transition: all 0.4s ease;
+}
+
+.theme-bailu .card:hover::after,
+.theme-hanlu .card:hover::after,
+.theme-xiaohan .card:hover::after {
+  opacity: 1;
+  box-shadow: 0 0 10px rgba(var(--decoration-glow), 0.5);
+}
+
+.theme-bailu .neon-border,
+.theme-hanlu .neon-border,
+.theme-xiaohan .neon-border {
+  box-shadow: 0 0 8px rgba(var(--color-neon-blue), 0.5), inset 0 0 3px rgba(var(--color-neon-blue), 0.2);
+  border: 1px solid rgba(var(--decoration-color-1), 0.4);
+}
+
+.theme-bailu .neon-border:hover,
+.theme-hanlu .neon-border:hover,
+.theme-xiaohan .neon-border:hover {
+  box-shadow: 0 0 15px rgba(var(--color-neon-blue), 0.7), 0 0 5px rgba(var(--decoration-glow), 0.5), inset 0 0 5px rgba(var(--color-neon-blue), 0.3);
+  border-color: rgba(var(--decoration-color-1), 0.7);
+}
+
+/* 按钮样式覆盖 - 华丽升级版 */
+.theme-bailu button,
+.theme-hanlu button,
+.theme-xiaohan button {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+  transform-origin: center;
+  border: 1px solid rgba(var(--border-decoration), 0.4);
+  box-shadow: 0 2px 10px rgba(var(--decoration-color-1), 0.2), 0 0 3px rgba(var(--decoration-color-2), 0.1);
+  backdrop-filter: blur(4px);
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+/* 按钮悬停效果增强 */
+.theme-bailu button:hover,
+.theme-hanlu button:hover,
+.theme-xiaohan button:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 5px 15px rgba(var(--decoration-color-1), 0.3), 0 0 8px rgba(var(--decoration-glow), 0.4);
+  border-color: rgba(var(--border-decoration), 0.7);
+}
+
+/* 按钮装饰元素 */
+.theme-bailu button::after,
+.theme-hanlu button::after,
+.theme-xiaohan button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(var(--decoration-color-1), 0.7), transparent);
+  opacity: 0.5;
+  transition: all 0.4s ease;
+}
+
+.theme-bailu button:hover::after,
+.theme-hanlu button:hover::after,
+.theme-xiaohan button:hover::after {
+  opacity: 1;
+  box-shadow: 0 0 8px rgba(var(--decoration-glow), 0.6);
+  animation: buttonGlowEffect 1.5s ease-in-out infinite alternate;
+}
+
+.theme-bailu button:active,
+.theme-hanlu button:active,
+.theme-xiaohan button:active {
+  transform: scale(0.97);
+  box-shadow: 0 0 8px rgba(var(--color-primary-accent), 0.5);
+}
+
+/* 节气特定按钮效果 */
+.theme-bailu button {
+  box-shadow: 0 2px 5px rgba(168, 160, 122, 0.2);
+}
+
+.theme-hanlu button {
+  box-shadow: 0 2px 5px rgba(106, 133, 182, 0.2);
+}
+
+.theme-xiaohan button {
+  box-shadow: 0 2px 5px rgba(169, 169, 169, 0.2);
+}
+
+/* 特定主题的文字颜色 */
+.theme-bailu .text-theme-primary {
+  color: rgb(168, 160, 122);
+}
+
+.theme-hanlu .text-theme-primary {
+  color: rgb(106, 133, 182);
+}
+
+.theme-xiaohan .text-theme-primary {
+  color: rgb(135, 206, 250);
+}
+
+/* 季节性图案 - 增强华丽效果 */
+.seasonal-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  animation: patternFloat 20s ease-in-out infinite alternate;
+  opacity: 0.8;
+  mix-blend-mode: soft-light;
+}
+
+@keyframes patternFloat {
+  0% {
+    background-position: 0% 0%;
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 0.9;
+  }
+  100% {
+    background-position: 100% 100%;
+    opacity: 0.7;
+  }
+}
+
+@keyframes buttonGlowEffect {
+  0% {
+    box-shadow: 0 0 5px rgba(var(--decoration-glow), 0.4);
+  }
+  100% {
+    box-shadow: 0 0 12px rgba(var(--decoration-glow), 0.8);
+  }
+}
+
+.theme-bailu .seasonal-pattern {
+  background-image: url('/assets/images/bailu-bg.jpg'),
+                    radial-gradient(circle at 10% 20%, rgba(168, 160, 122, 0.15) 0%, transparent 50%),
+                    radial-gradient(circle at 90% 80%, rgba(168, 160, 122, 0.15) 0%, transparent 50%),
+                    radial-gradient(circle at 50% 50%, rgba(168, 160, 122, 0.1) 0%, transparent 70%);
+  background-size: cover, 100% 100%, 100% 100%, 200% 200%;
+  background-blend-mode: overlay;
+  box-shadow: inset 0 0 100px rgba(215, 190, 105, 0.2);
+}
+
+.theme-hanlu .seasonal-pattern {
+  background-image: url('/assets/images/hanlu-bg.jpg'),
+                    radial-gradient(circle at 10% 20%, rgba(106, 133, 182, 0.15) 0%, transparent 50%),
+                    radial-gradient(circle at 90% 80%, rgba(106, 133, 182, 0.15) 0%, transparent 50%),
+                    radial-gradient(circle at 50% 50%, rgba(106, 133, 182, 0.1) 0%, transparent 70%);
+  background-size: cover, 100% 100%, 100% 100%, 200% 200%;
+  background-blend-mode: overlay;
+  box-shadow: inset 0 0 100px rgba(80, 140, 190, 0.2);
+}
+
+.theme-xiaohan .seasonal-pattern {
+  background-image: url('/assets/images/xiaohan-bg.jpg'),
+                    radial-gradient(circle at 10% 20%, rgba(192, 192, 192, 0.15) 0%, transparent 50%),
+                    radial-gradient(circle at 90% 80%, rgba(192, 192, 192, 0.15) 0%, transparent 50%),
+                    radial-gradient(circle at 50% 50%, rgba(192, 192, 192, 0.1) 0%, transparent 70%);
+  background-size: cover, 100% 100%, 100% 100%, 200% 200%;
+  background-blend-mode: overlay;
+  box-shadow: inset 0 0 100px rgba(202, 202, 212, 0.3);
+  animation: snowSparkle 8s ease-in-out infinite alternate;
+}
+
+@keyframes snowSparkle {
+  0% {
+    background-position: center center;
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.05);
+  }
+  100% {
+    background-position: center bottom;
+    filter: brightness(1);
+  }
+}
+
+/* 导航栏主题样式 - 华丽升级版 */
+.theme-bailu header {
+  border-bottom-color: rgba(168, 160, 122, 0.3);
+  background: linear-gradient(to bottom, rgba(245, 245, 245, 0.8), rgba(245, 245, 245, 0.6));
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 15px rgba(168, 160, 122, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-hanlu header {
+  border-bottom-color: rgba(106, 133, 182, 0.3);
+  background: linear-gradient(to bottom, rgba(184, 198, 219, 0.8), rgba(184, 198, 219, 0.6));
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 15px rgba(106, 133, 182, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-xiaohan header {
+  border-bottom-color: rgba(169, 169, 169, 0.3);
+  background: linear-gradient(to bottom, rgba(230, 233, 240, 0.8), rgba(230, 233, 240, 0.6));
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 15px rgba(169, 169, 169, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+/* 导航栏装饰元素 */
+.theme-bailu header::before,
+.theme-hanlu header::before,
+.theme-xiaohan header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 1;
+}
+
+.theme-bailu header::before {
+  background: linear-gradient(90deg, transparent, rgba(215, 190, 105, 0.8), transparent);
+  box-shadow: 0 0 10px rgba(215, 190, 105, 0.5);
+}
+
+.theme-hanlu header::before {
+  background: linear-gradient(90deg, transparent, rgba(80, 140, 190, 0.8), transparent);
+  box-shadow: 0 0 10px rgba(80, 140, 190, 0.5);
+}
+
+.theme-xiaohan header::before {
+  background: linear-gradient(90deg, transparent, rgba(202, 202, 212, 0.8), transparent);
+  box-shadow: 0 0 10px rgba(202, 202, 212, 0.5);
+}
+
+/* 主题特定阴影 - 华丽升级版 */
+.theme-bailu .shadow-theme {
+  box-shadow: 0 4px 12px rgba(168, 160, 122, 0.2), 0 0 20px rgba(168, 160, 122, 0.1);
+  position: relative;
+}
+
+.theme-bailu .shadow-theme::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 5%;
+  right: 5%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(215, 190, 105, 0.7), transparent);
+  border-radius: 50%;
+  opacity: 0.6;
+  filter: blur(1px);
+}
+
+.theme-hanlu .shadow-theme {
+  box-shadow: 0 4px 12px rgba(106, 133, 182, 0.2), 0 0 20px rgba(106, 133, 182, 0.1);
+  position: relative;
+}
+
+.theme-hanlu .shadow-theme::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 5%;
+  right: 5%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(80, 140, 190, 0.7), transparent);
+  border-radius: 50%;
+  opacity: 0.6;
+  filter: blur(1px);
+}
+
+.theme-xiaohan .shadow-theme {
+  box-shadow: 0 4px 12px rgba(169, 169, 169, 0.2), 0 0 20px rgba(169, 169, 169, 0.1);
+  position: relative;
+}
+
+.theme-xiaohan .shadow-theme::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 5%;
+  right: 5%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(202, 202, 212, 0.7), transparent);
+  border-radius: 50%;
+  opacity: 0.6;
+  filter: blur(1px);
+}
+
+/* 节气主题过渡动画 - 华丽升级版 */
+.theme-transition {
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+/* 添加中国传统装饰元素 */
+.traditional-ornament {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.7;
+  transition: all 0.5s ease;
+}
+
+.theme-bailu .traditional-ornament {
+  background-image: url('/assets/images/bailu-ornament.svg');
+  filter: drop-shadow(0 0 5px rgba(215, 190, 105, 0.5));
+}
+
+.theme-hanlu .traditional-ornament {
+  background-image: url('/assets/images/hanlu-ornament.svg');
+  filter: drop-shadow(0 0 5px rgba(80, 140, 190, 0.5));
+}
+
+.theme-xiaohan .traditional-ornament {
+  background-image: url('/assets/images/xiaohan-ornament.svg');
+  filter: drop-shadow(0 0 5px rgba(202, 202, 212, 0.5));
+}
+
+/* 节气特定滚动条样式 - 华丽升级版 */
+.theme-bailu ::-webkit-scrollbar-thumb {
+  background-color: rgba(168, 160, 122, 0.6);
+  border-radius: 10px;
+  background-image: linear-gradient(45deg, rgba(215, 190, 105, 0.3) 25%, transparent 25%, transparent 50%, rgba(215, 190, 105, 0.3) 50%, rgba(215, 190, 105, 0.3) 75%, transparent 75%, transparent);
+  background-size: 8px 8px;
+  box-shadow: inset 0 0 3px rgba(215, 190, 105, 0.5);
+}
+
+.theme-hanlu ::-webkit-scrollbar-thumb {
+  background-color: rgba(106, 133, 182, 0.6);
+  border-radius: 10px;
+  background-image: linear-gradient(45deg, rgba(80, 140, 190, 0.3) 25%, transparent 25%, transparent 50%, rgba(80, 140, 190, 0.3) 50%, rgba(80, 140, 190, 0.3) 75%, transparent 75%, transparent);
+  background-size: 8px 8px;
+  box-shadow: inset 0 0 3px rgba(80, 140, 190, 0.5);
+}
+
+.theme-xiaohan ::-webkit-scrollbar-thumb {
+  background-color: rgba(169, 169, 169, 0.6);
+  border-radius: 10px;
+  background-image: linear-gradient(45deg, rgba(202, 202, 212, 0.3) 25%, transparent 25%, transparent 50%, rgba(202, 202, 212, 0.3) 50%, rgba(202, 202, 212, 0.3) 75%, transparent 75%, transparent);
+  background-size: 8px 8px;
+  box-shadow: inset 0 0 3px rgba(202, 202, 212, 0.5);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgba(var(--color-primary-dark), 0.1);
+  border-radius: 10px;
+  background-image: linear-gradient(rgba(var(--decoration-color-1), 0.05) 1px, transparent 1px);
+  background-size: 100% 10px;
+}
