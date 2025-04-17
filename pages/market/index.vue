@@ -1,8 +1,20 @@
 <template>
   <div class="space-y-8">
-    <section class="hero-section bg-primary-light rounded-lg p-8 border-2 border-neon-blue">
-      <div class="max-w-3xl mx-auto text-center">
-        <h1 class="text-5xl font-bold mb-6 text-neon-blue">科幻游戏交易平台</h1>
+    <section class="hero-section bg-primary-light rounded-lg p-8 border-2 border-neon-blue relative overflow-hidden">
+      <!-- 节气特定装饰元素 -->
+      <div class="seasonal-pattern absolute inset-0 opacity-10" :class="`${$state.themeStyle.value}-pattern`"></div>
+      
+      <!-- 白露特效：露珠效果 -->
+      <div v-if="$state.themeStyle.value === 'bailu'" class="dew-drops-container"></div>
+      
+      <!-- 寒露特效：秋叶飘落 -->
+      <div v-if="$state.themeStyle.value === 'hanlu'" class="falling-leaves-container"></div>
+      
+      <!-- 小寒特效：雪花飘落 -->
+      <div v-if="$state.themeStyle.value === 'xiaohan'" class="snowflakes-container"></div>
+      
+      <div class="max-w-3xl mx-auto text-center relative z-10">
+        <h1 class="text-5xl font-bold mb-6 text-neon-blue seasonal-text-glow">The broken with star sinks交易平台</h1>
         <p class="text-xl mb-8">安全可靠的游戏物品交易市场，打造公平透明的游戏经济</p>
         <div class="flex justify-center space-x-4">
           <button class="bg-neon-purple hover:bg-neon-blue text-white font-bold py-2 px-4 rounded-full transition-all">
@@ -16,8 +28,11 @@
     </section>
 
     <!-- 搜索和筛选区域 -->
-    <section class="search-section bg-primary-light p-6 rounded-lg neon-border">
-      <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
+    <section class="search-section bg-primary-light p-6 rounded-lg neon-border relative overflow-hidden">
+      <!-- 节气特定装饰元素 -->
+      <div class="seasonal-pattern absolute inset-0 opacity-10" :class="`${$state.themeStyle.value}-pattern`"></div>
+      
+      <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 relative z-10">
         <div class="flex-1">
           <div class="relative">
             <input 
@@ -57,7 +72,7 @@
 
     <!-- 市场物品列表 -->
     <section class="market-section">
-      <h2 class="text-3xl font-bold text-neon-blue mb-6">热门交易物品</h2>
+      <h2 class="text-3xl font-bold text-neon-blue mb-6 seasonal-text-glow">热门交易物品</h2>
       
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <div 
@@ -109,8 +124,11 @@
     </section>
 
     <!-- 价格趋势图表 -->
-    <section class="trends-section bg-primary-light p-6 rounded-lg neon-border">
-      <h2 class="text-2xl font-bold text-neon-blue mb-4">市场价格趋势</h2>
+    <section class="trends-section bg-primary-light p-6 rounded-lg neon-border relative overflow-hidden">
+      <!-- 节气特定装饰元素 -->
+      <div class="seasonal-pattern absolute inset-0 opacity-10" :class="`${$state.themeStyle.value}-pattern`"></div>
+      
+      <h2 class="text-2xl font-bold text-neon-blue mb-4 seasonal-text-glow relative z-10">市场价格趋势</h2>
       <div class="h-64 bg-secondary-dark rounded-lg p-4 flex items-center justify-center">
         <!-- 这里将来可以集成实际的图表库，如Chart.js或Echarts -->
         <p class="text-gray-400">价格趋势图表将在这里显示</p>
@@ -119,8 +137,10 @@
 
     <!-- 最近交易记录 -->
     <section class="recent-trades">
-      <h2 class="text-2xl font-bold text-neon-blue mb-4">最近交易记录</h2>
-      <div class="bg-primary-light rounded-lg overflow-hidden neon-border">
+      <h2 class="text-2xl font-bold text-neon-blue mb-4 seasonal-text-glow">最近交易记录</h2>
+      <div class="bg-primary-light rounded-lg overflow-hidden neon-border relative">
+        <!-- 节气特定装饰元素 -->
+        <div class="seasonal-pattern absolute inset-0 opacity-10" :class="`${$state.themeStyle.value}-pattern`"></div>
         <table class="w-full">
           <thead>
             <tr class="bg-secondary-dark">
@@ -152,7 +172,111 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted, onUnmounted } from 'vue';
+import { useState } from 'nuxt/app';
+
+// 获取当前主题样式
+const themeStyle = useState('themeStyle', () => 'bailu');
+
+// 创建$state对象以与模板中的引用保持一致
+const $state = {
+  themeStyle
+};
+
+// 节气特效生成函数
+const createSeasonalEffects = () => {
+  // 根据当前主题创建特效
+  if ($state.themeStyle.value === 'bailu') {
+    createDewDrops();
+  } else if ($state.themeStyle.value === 'hanlu') {
+    createFallingLeaves();
+  } else if ($state.themeStyle.value === 'xiaohan') {
+    createSnowflakes();
+  }
+};
+
+// 白露特效：创建露珠
+const createDewDrops = () => {
+  const container = document.querySelector('.dew-drops-container');
+  if (!container) return;
+  
+  // 清除现有元素
+  container.innerHTML = '';
+  
+  // 创建露珠元素
+  const dewCount = 15;
+  for (let i = 0; i < dewCount; i++) {
+    const dew = document.createElement('div');
+    dew.className = 'dew-drop';
+    dew.style.left = `${Math.random() * 100}%`;
+    dew.style.top = `${Math.random() * 100}%`;
+    dew.style.animationDelay = `${Math.random() * 5}s`;
+    dew.style.width = `${5 + Math.random() * 10}px`;
+    dew.style.height = dew.style.width;
+    container.appendChild(dew);
+  }
+};
+
+// 寒露特效：创建飘落的秋叶
+const createFallingLeaves = () => {
+  const container = document.querySelector('.falling-leaves-container');
+  if (!container) return;
+  
+  // 清除现有元素
+  container.innerHTML = '';
+  
+  // 创建秋叶元素
+  const leafCount = 12;
+  for (let i = 0; i < leafCount; i++) {
+    const leaf = document.createElement('div');
+    leaf.className = 'falling-leaf';
+    leaf.style.left = `${Math.random() * 100}%`;
+    leaf.style.top = `-${10 + Math.random() * 20}px`;
+    leaf.style.animationDuration = `${10 + Math.random() * 20}s`;
+    leaf.style.animationDelay = `${Math.random() * 5}s`;
+    container.appendChild(leaf);
+  }
+};
+
+// 小寒特效：创建飘落的雪花
+const createSnowflakes = () => {
+  const container = document.querySelector('.snowflakes-container');
+  if (!container) return;
+  
+  // 清除现有元素
+  container.innerHTML = '';
+  
+  // 创建雪花元素
+  const snowCount = 20;
+  for (let i = 0; i < snowCount; i++) {
+    const snow = document.createElement('div');
+    snow.className = 'snowflake';
+    snow.style.left = `${Math.random() * 100}%`;
+    snow.style.top = `-${10 + Math.random() * 20}px`;
+    snow.style.opacity = `${0.5 + Math.random() * 0.5}`;
+    snow.style.animationDuration = `${10 + Math.random() * 15}s`;
+    snow.style.animationDelay = `${Math.random() * 5}s`;
+    snow.style.width = `${3 + Math.random() * 5}px`;
+    snow.style.height = snow.style.width;
+    container.appendChild(snow);
+  }
+};
+
+// 监听主题变化并重新创建特效
+const themeChangeHandler = () => {
+  createSeasonalEffects();
+};
+
+// 组件挂载时创建特效
+onMounted(() => {
+  createSeasonalEffects();
+  window.addEventListener('themeChange', themeChangeHandler);
+});
+
+// 组件卸载时移除事件监听
+onUnmounted(() => {
+  window.removeEventListener('themeChange', themeChangeHandler);
+});
 
 // 搜索和筛选状态
 const searchQuery = ref('');
@@ -348,5 +472,97 @@ const recentTrades = ref([
 
 .hover\:scale-102:hover {
   transform: scale(1.02);
+}
+
+/* 节气特定文字发光效果 */
+.seasonal-text-glow {
+  text-shadow: 0 0 8px rgba(var(--decoration-color-1), 0.7);
+  transition: text-shadow 0.5s ease;
+}
+
+/* 白露特效容器 */
+.dew-drops-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+  overflow: hidden;
+}
+
+/* 白露特效：露珠 */
+.dew-drop {
+  position: absolute;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(215, 190, 105, 0.4));
+  border-radius: 50%;
+  box-shadow: 0 0 5px rgba(215, 190, 105, 0.6);
+  animation: dewGlisten 5s ease-in-out infinite;
+  z-index: 5;
+}
+
+@keyframes dewGlisten {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.1); }
+}
+
+/* 寒露特效容器 */
+.falling-leaves-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+  overflow: hidden;
+}
+
+/* 寒露特效：飘落的秋叶 */
+.falling-leaf {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background-image: url("data:image/svg+xml,%3Csvg width='15' height='15' viewBox='0 0 15 15' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.5 1 Q12 7.5 7.5 14 Q3 7.5 7.5 1 Z' fill='rgba(106, 133, 182, 0.7)' /%3E%3C/svg%3E");
+  animation: leafFall linear forwards, leafSwing 3s ease-in-out infinite;
+  z-index: 5;
+}
+
+@keyframes leafFall {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(1000px) rotate(360deg); }
+}
+
+@keyframes leafSwing {
+  0%, 100% { transform: translateX(-5px) rotate(-5deg); }
+  50% { transform: translateX(5px) rotate(5deg); }
+}
+
+/* 小寒特效容器 */
+.snowflakes-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+  overflow: hidden;
+}
+
+/* 小寒特效：雪花 */
+.snowflake {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  animation: snowFall linear forwards;
+  z-index: 5;
+}
+
+@keyframes snowFall {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(1000px) rotate(360deg); }
 }
 </style>

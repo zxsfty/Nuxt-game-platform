@@ -1,0 +1,279 @@
+[vue-tsc] Property '$state' does not exist on type 'CreateComponentPublicInstanceWithMixins<ToResolvedProps<{}, {}>, { channels: Ref<{ name: string; online: boolean; unread: number; members: number; }[], { name: string; online: boolean; unread: number; members: number; }[] | { ...; }[]>; activeChannel: Ref<...>; messages: Ref<...>; newMessage: Ref<...>; sendMessage: ...'.
+/Nuxt-game-platform/pages/chat/index.vue:5:76
+    3 |     <section class="hero-section bg-primary-light rounded-lg p-8 border-2 border-neon-blue relative overflow-hidden">
+    4 |       <!-- 节气特定装饰元素 -->
+  > 5 |       <div class="seasonal-pattern absolute inset-0 opacity-10" :class="`${$state.themeStyle.value}-pattern`"></div>
+      |                                                                            ^^^^^^
+    6 |       
+    7 |       <!-- 白露特效：露珠效果 -->
+    8 |       <div v-if="$state.themeStyle.value === 'bailu'" class="dew-drops-container"></div>
+[vue-tsc] Property '$state' does not exist on type 'CreateComponentPublicInstanceWithMixins<ToResolvedProps<{}, {}>, { channels: Ref<{ name: string; online: boolean; unread: number; members: number; }[], { name: string; online: boolean; unread: number; members: number; }[] | { ...; }[]>; activeChannel: Ref<...>; messages: Ref<...>; newMessage: Ref<...>; sendMessage: ...'.
+/Nuxt-game-platform/pages/chat/index.vue:8:18
+     6 |       
+     7 |       <!-- 白露特效：露珠效果 -->
+  >  8 |       <div v-if="$state.themeStyle.value === 'bailu'" class="dew-drops-container"></div>
+       |                  ^^^^^^
+     9 |       
+    10 |       <!-- 寒露特效：秋叶飘落 -->
+    11 |       <div v-if="$state.themeStyle.value === 'hanlu'" class="falling-leaves-container"></div>
+[vue-tsc] Property '$state' does not exist on type 'CreateComponentPublicInstanceWithMixins<ToResolvedProps<{}, {}>, { channels: Ref<{ name: string; online: boolean; unread: number; members: number; }[], { name: string; online: boolean; unread: number; members: number; }[] | { ...; }[]>; activeChannel: Ref<...>; messages: Ref<...>; newMessage: Ref<...>; sendMessage: ...'.
+/Nuxt-game-platform/pages/chat/index.vue:11:18
+     9 |       
+    10 |       <!-- 寒露特效：秋叶飘落 -->
+  > 11 |       <div v-if="$state.themeStyle.value === 'hanlu'" class="falling-leaves-container"></div>
+       |                  ^^^^^^
+    12 |       
+    13 |       <!-- 小寒特效：雪花飘落 -->
+    14 |       <div v-if="$state.themeStyle.value === 'xiaohan'" class="snowflakes-container"></div>
+[vue-tsc] Property '$state' does not exist on type 'CreateComponentPublicInstanceWithMixins<ToResolvedProps<{}, {}>, { channels: Ref<{ name: string; online: boolean; unread: number; members: number; }[], { name: string; online: boolean; unread: number; members: number; }[] | { ...; }[]>; activeChannel: Ref<...>; messages: Ref<...>; newMessage: Ref<...>; sendMessage: ...'.
+/Nuxt-game-platform/pages/chat/index.vue:14:18
+    12 |       
+    13 |       <!-- 小寒特效：雪花飘落 -->
+  > 14 |       <div v-if="$state.themeStyle.value === 'xiaohan'" class="snowflakes-container"></div>
+       |                  ^^^^^^
+    15 |       
+    16 |       <div class="max-w-3xl mx-auto text-center relative z-10">
+    17 |         <h1 class="text-5xl font-bold mb-6 text-neon-blue seasonal-text-glow">The broken with star sinks聊天</h1>
+[vue-tsc] Property '$state' does not exist on type 'CreateComponentPublicInstanceWithMixins<ToResolvedProps<{}, {}>, { channels: Ref<{ name: string; online: boolean; unread: number; members: number; }[], { name: string; online: boolean; unread: number; members: number; }[] | { ...; }[]>; activeChannel: Ref<...>; messages: Ref<...>; newMessage: Ref<...>; sendMessage: ...'.
+/Nuxt-game-platform/pages/chat/index.vue:34:77
+    32 |       <div class="md:col-span-1 bg-primary-light p-4 rounded-lg neon-border relative overflow-hidden">
+    33 |         <!-- 节气特定装饰元素 -->
+  > 34 |         <div class="seasonal-pattern absolute inset-0 opacity-5" :class="`${$state.themeStyle.value}-pattern`"></div>
+       |                                                                             ^^^^^^
+    35 |         
+    36 |         <div class="flex justify-between items-center mb-4 relative z-10">
+    37 |           <h3 class="text-xl font-bold text-neon-blue seasonal-text-glow" :class="`${$state.themeStyle.value}-text-glow`">聊天频道</h3>
+[vue-tsc] Property '$state' does not exist on type 'CreateComponentPublicInstanceWithMixins<ToResolvedProps<{}, {}>, { channels: Ref<{ name: string; online: boolean; unread: number; members: number; }[], { name: string; online: boolean; unread: number; members: number; }[] | { ...; }[]>; activeChannel: Ref<...>; messages: Ref<...>; newMessage: Ref<...>; sendMessage: ...'.
+/Nuxt-game-platform/pages/chat/index.vue:37:86
+    35 |         
+    36 |         <div class="flex justify-between items-center mb-4 relative z-10">
+  > 37 |           <h3 class="text-xl font-bold text-neon-blue seasonal-text-glow" :class="`${$state.themeStyle.value}-text-glow`">聊天频道</h3>
+       |                                                                                      ^^^^^^
+    38 |           <button class="text-neon-purple hover:text-neon-blue transition-colors seasonal-icon-button" :class="`${$state.themeStyle.value}-icon-button`">
+    39 |             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+    40 |               <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+[vue-tsc] Property '$state' does not exist on type 'CreateComponentPublicInstanceWithMixins<ToResolvedProps<{}, {}>, { channels: Ref<{ name: string; online: boolean; unread: number; members: number; }[], { name: string; online: boolean; unread: number; members: number; }[] | { ...; }[]>; activeChannel: Ref<...>; messages: Ref<...>; newMessage: Ref<...>; sendMessage: ...'.
+/Nuxt-game-platform/pages/chat/index.vue:38:115
+    36 |         <div class="flex justify-between items-center mb-4 relative z-10">
+    37 |           <h3 class="text-xl font-bold text-neon-blue seasonal-text-glow" :class="`${$state.themeStyle.value}-text-glow`">聊天频道</h3>
+  > 38 |           <button class="text-neon-purple hover:text-neon-blue transition-colors seasonal-icon-button" :class="`${$state.themeStyle.value}-icon-button`">
+       |                                                                                                                   ^^^^^^
+    39 |             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+    40 |               <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+    41 |             </svg>
+[vue-tsc] Property '$state' does not exist on type 'CreateComponentPublicInstanceWithMixins<ToResolvedProps<{}, {}>, { channels: Ref<{ name: string; online: boolean; unread: number; members: number; }[], { name: string; online: boolean; unread: number; members: number; }[] | { ...; }[]>; activeChannel: Ref<...>; messages: Ref<...>; newMessage: Ref<...>; sendMessage: ...'.
+/Nuxt-game-platform/pages/chat/index.vue:49:40
+    47 |                :class="{ 
+    48 |                  'bg-secondary-dark': activeChannel === index,
+  > 49 |                  'bailu-channel-item': $state.themeStyle.value === 'bailu',
+       |                                        ^^^^^^
+    50 |                  'hanlu-channel-item': $state.themeStyle.value === 'hanlu',
+    51 |                  'xiaohan-channel-item': $state.themeStyle.value === 'xiaohan'
+    52 |                }"
+[vue-tsc] Property '$state' does not exist on type 'CreateComponentPublicInstanceWithMixins<ToResolvedProps<{}, {}>, { channels: Ref<{ name: string; online: boolean; unread: number; members: number; }[], { name: string; online: boolean; unread: number; members: number; }[] | { ...; }[]>; activeChannel: Ref<...>; messages: Ref<...>; newMessage: Ref<...>; sendMessage: ...'.
+/Nuxt-game-platform/pages/chat/index.vue:50:40
+    48 |                  'bg-secondary-dark': activeChannel === index,
+    49 |                  'bailu-channel-item': $state.themeStyle.value === 'bailu',
+  > 50 |                  'hanlu-channel-item': $state.themeStyle.value === 'hanlu',
+       |                                        ^^^^^^
+    51 |                  'xiaohan-channel-item': $state.themeStyle.value === 'xiaohan'
+    52 |                }"
+    53 |                @click="activeChannel = index">
+[vue-tsc] Property '$state' does not exist on type 'CreateComponentPublicInstanceWithMixins<ToResolvedProps<{}, {}>, { channels: Ref<{ name: string; online: boolean; unread: number; members: number; }[], { name: string; online: boolean; unread: number; members: number; }[] | { ...; }[]>; activeChannel: Ref<...>; messages: Ref<...>; newMessage: Ref<...>; sendMessage: ...'.
+/Nuxt-game-platform/pages/chat/index.vue:51:42
+    49 |                  'bailu-channel-item': $state.themeStyle.value === 'bailu',
+    50 |                  'hanlu-channel-item': $state.themeStyle.value === 'hanlu',
+  > 51 |                  'xiaohan-channel-item': $state.themeStyle.value === 'xiaohan'
+       |                                          ^^^^^^
+    52 |                }"
+    53 |                @click="activeChannel = index">
+    54 |             <!-- 节气特定装饰元素 -->
+[vue-tsc] Property '$state' does not exist on type 'CreateComponentPublicInstanceWithMixins<ToResolvedProps<{}, {}>, { channels: Ref<{ name: string; online: boolean; unread: number; members: number; }[], { name: string; online: boolean; unread: number; members: number; }[] | { ...; }[]>; activeChannel: Ref<...>; messages: Ref<...>; newMessage: Ref<...>; sendMessage: ...'.
+/Nuxt-game-platform/pages/chat/index.vue:55:96
+    53 |                @click="activeChannel = index">
+    54 |             <!-- 节气特定装饰元素 -->
+  > 55 |             <div v-if="activeChannel === index" class="absolute inset-0 opacity-20" :class="`${$state.themeStyle.value}-channel-decoration`"></div>
+       |                                                                                                ^^^^^^
+    56 |             <div class="flex items-center space-x-2 relative z-10">
+    57 |               <div class="w-2 h-2 rounded-full" 
+    58 |                    :class="[channel.online ? 'bg-green-500' : 'bg-gray-500', `${$state.themeStyle.value}-status-indicator`]"></div>
+[vue-tsc] Property '$state' does not exist on type 'CreateComponentPublicInstanceWithMixins<ToResolvedProps<{}, {}>, { channels: Ref<{ name: string; online: boolean; unread: number; members: number; }[], { name: string; online: boolean; unread: number; members: number; }[] | { ...; }[]>; activeChannel: Ref<...>; messages: Ref<...>; newMessage: Ref<...>; sendMessage: ...'.
+/Nuxt-game-platform/pages/chat/index.vue:58:81
+    56 |             <div class="flex items-center space-x-2 relative z-10">
+    57 |               <div class="w-2 h-2 rounded-full" 
+  > 58 |                    :class="[channel.online ? 'bg-green-500' : 'bg-gray-500', `${$state.themeStyle.value}-status-indicator`]"></div>
+       |                                                                                 ^^^^^^
+    59 |               <span class="font-medium" :class="activeChannel === index ? `${$state.themeStyle.value}-text` : ''">{{ channel.name }}</span>
+    60 |               <span v-if="channel.unread" 
+    61 |                     class="text-white text-xs rounded-full px-2 py-0.5 ml-auto seasonal-badge"
+[vue-tsc] Property '$state' does not exist on type 'CreateComponentPublicInstanceWithMixins<ToResolvedProps<{}, {}>, { channels: Ref<{ name: string; online: boolean; unread: number; members: number; }[], { name: string; online: boolean; unread: number; members: number; }[] | { ...; }[]>; activeChannel: Ref<...>; messages: Ref<...>; newMessage: Ref<...>; sendMessage: ...'.
+/Nuxt-game-platform/pages/chat/index.vue:59:78
+    57 |               <div class="w-2 h-2 rounded-full" 
+    58 |                    :class="[channel.online ? 'bg-green-500' : 'bg-gray-500', `${$state.themeStyle.value}-status-indicator`]"></div>
+  > 59 |               <span class="font-medium" :class="activeChannel === index ? `${$state.themeStyle.value}-text` : ''">{{ channel.name }}</span>
+       |                                                                              ^^^^^^
+    60 |               <span v-if="channel.unread" 
+    61 |                     class="text-white text-xs rounded-full px-2 py-0.5 ml-auto seasonal-badge"
+    62 |                     :class="`${$state.themeStyle.value}-badge`">
+[vue-tsc] Property '$state' does not exist on type 'CreateComponentPublicInstanceWithMixins<ToResolvedProps<{}, {}>, { channels: Ref<{ name: string; online: boolean; unread: number; members: number; }[], { name: string; online: boolean; unread: number; members: number; }[] | { ...; }[]>; activeChannel: Ref<...>; messages: Ref<...>; newMessage: Ref<...>; sendMessage: ...'.
+/Nuxt-game-platform/pages/chat/index.vue:62:32
+    60 |               <span v-if="channel.unread" 
+    61 |                     class="text-white text-xs rounded-full px-2 py-0.5 ml-auto seasonal-badge"
+  > 62 |                     :class="`${$state.themeStyle.value}-badge`">
+       |                                ^^^^^^
+    63 |                 {{ channel.unread }}
+    64 |               </span>
+    65 |             </div>
+[vue-tsc] Property '$state' does not exist on type 'CreateComponentPublicInstanceWithMixins<ToResolvedProps<{}, {}>, { channels: Ref<{ name: string; online: boolean; unread: number; members: number; }[], { name: string; online: boolean; unread: number; members: number; }[] | { ...; }[]>; activeChannel: Ref<...>; messages: Ref<...>; newMessage: Ref<...>; sendMessage: ...'.
+/Nuxt-game-platform/pages/chat/index.vue:73:77
+    71 |       <div class="md:col-span-3 bg-primary-light p-4 rounded-lg neon-border flex flex-col h-[600px] relative overflow-hidden">
+    72 |         <!-- 节气特定装饰元素 -->
+  > 73 |         <div class="seasonal-pattern absolute inset-0 opacity-5" :class="`${$state.themeStyle.value}-pattern`"></div>
+       |                                                                             ^^^^^^
+    74 |         
+    75 |         <div class="flex items-center space-x-2 p-2 border-b border-neon-blue/30 mb-4 relative z-10">
+    76 |           <div class="w-3 h-3 rounded-full bg-green-500" :class="`${$state.themeStyle.value}-status-indicator`"></div>
+[vue-tsc] Property '$state' does not exist on type 'CreateComponentPublicInstanceWithMixins<ToResolvedProps<{}, {}>, { channels: Ref<{ name: string; online: boolean; unread: number; members: number; }[], { name: string; online: boolean; unread: number; members: number; }[] | { ...; }[]>; activeChannel: Ref<...>; messages: Ref<...>; newMessage: Ref<...>; sendMessage: ...'.
+/Nuxt-game-platform/pages/chat/index.vue:76:69
+    74 |         
+    75 |         <div class="flex items-center space-x-2 p-2 border-b border-neon-blue/30 mb-4 relative z-10">
+  > 76 |           <div class="w-3 h-3 rounded-full bg-green-500" :class="`${$state.themeStyle.value}-status-indicator`"></div>
+       |                                                                     ^^^^^^
+    77 |           <h3 class="text-xl font-bold text-neon-blue seasonal-text-glow" :class="`${$state.themeStyle.value}-text-glow`">{{ channels[activeChannel]?.name || '公共频道' }}</h3>
+    78 |           <span class="text-sm text-gray-400 ml-2">{{ channels[activeChannel]?.members || 0 }} 名成员</span>
+    79 |         </div>
+[vue-tsc] Property '$state' does not exist on type 'CreateComponentPublicInstanceWithMixins<ToResolvedProps<{}, {}>, { channels: Ref<{ name: string; online: boolean; unread: number; members: number; }[], { name: string; online: boolean; unread: number; members: number; }[] | { ...; }[]>; activeChannel: Ref<...>; messages: Ref<...>; newMessage: Ref<...>; sendMessage: ...'.
+/Nuxt-game-platform/pages/chat/index.vue:77:86
+    75 |         <div class="flex items-center space-x-2 p-2 border-b border-neon-blue/30 mb-4 relative z-10">
+    76 |           <div class="w-3 h-3 rounded-full bg-green-500" :class="`${$state.themeStyle.value}-status-indicator`"></div>
+  > 77 |           <h3 class="text-xl font-bold text-neon-blue seasonal-text-glow" :class="`${$state.themeStyle.value}-text-glow`">{{ channels[activeChannel]?.name || '公共频道' }}</h3>
+       |                                                                                      ^^^^^^
+    78 |           <span class="text-sm text-gray-400 ml-2">{{ channels[activeChannel]?.members || 0 }} 名成员</span>
+    79 |         </div>
+    80 |
+[vue-tsc] Property '$state' does not exist on type 'CreateComponentPublicInstanceWithMixins<ToResolvedProps<{}, {}>, { channels: Ref<{ name: string; online: boolean; unread: number; members: number; }[], { name: string; online: boolean; unread: number; members: number; }[] | { ...; }[]>; activeChannel: Ref<...>; messages: Ref<...>; newMessage: Ref<...>; sendMessage: ...'.
+/Nuxt-game-platform/pages/chat/index.vue:86:164
+    84 |                class="flex items-start space-x-3"
+    85 |                :class="{'justify-end': message.isMe}">
+  > 86 |             <div v-if="!message.isMe" class="w-8 h-8 rounded-full bg-neon-purple flex items-center justify-center text-white font-bold seasonal-avatar" :class="`${$state.themeStyle.value}-avatar`">
+       |                                                                                                                                                                    ^^^^^^
+    87 |               {{ message.sender.charAt(0) }}
+    88 |             </div>
+    89 |             <div class="max-w-[70%]">
+[vue-tsc] Property '$state' does not exist on type 'CreateComponentPublicInstanceWithMixins<ToResolvedProps<{}, {}>, { channels: Ref<{ name: string; online: boolean; unread: number; members: number; }[], { name: string; online: boolean; unread: number; members: number; }[] | { ...; }[]>; activeChannel: Ref<...>; messages: Ref<...>; newMessage: Ref<...>; sendMessage: ...'.
+/Nuxt-game-platform/pages/chat/index.vue:95:39
+    93 |                      'bg-neon-blue text-white rounded-tr-none': message.isMe,
+    94 |                      'bg-secondary-dark text-white rounded-tl-none': !message.isMe,
+  > 95 |                      'bailu-message': $state.themeStyle.value === 'bailu',
+       |                                       ^^^^^^
+    96 |                      'hanlu-message': $state.themeStyle.value === 'hanlu',
+    97 |                      'xiaohan-message': $state.themeStyle.value === 'xiaohan'
+    98 |                    }">
+[vue-tsc] Property '$state' does not exist on type 'CreateComponentPublicInstanceWithMixins<ToResolvedProps<{}, {}>, { channels: Ref<{ name: string; online: boolean; unread: number; members: number; }[], { name: string; online: boolean; unread: number; members: number; }[] | { ...; }[]>; activeChannel: Ref<...>; messages: Ref<...>; newMessage: Ref<...>; sendMessage: ...'.
+/Nuxt-game-platform/pages/chat/index.vue:96:39
+    94 |                      'bg-secondary-dark text-white rounded-tl-none': !message.isMe,
+    95 |                      'bailu-message': $state.themeStyle.value === 'bailu',
+  > 96 |                      'hanlu-message': $state.themeStyle.value === 'hanlu',
+       |                                       ^^^^^^
+    97 |                      'xiaohan-message': $state.themeStyle.value === 'xiaohan'
+    98 |                    }">
+    99 |                 <!-- 节气特定装饰元素 -->
+[vue-tsc] Property '$state' does not exist on type 'CreateComponentPublicInstanceWithMixins<ToResolvedProps<{}, {}>, { channels: Ref<{ name: string; online: boolean; unread: number; members: number; }[], { name: string; online: boolean; unread: number; members: number; }[] | { ...; }[]>; activeChannel: Ref<...>; messages: Ref<...>; newMessage: Ref<...>; sendMessage: ...'.
+/Nuxt-game-platform/pages/chat/index.vue:97:41
+     95 |                      'bailu-message': $state.themeStyle.value === 'bailu',
+     96 |                      'hanlu-message': $state.themeStyle.value === 'hanlu',
+  >  97 |                      'xiaohan-message': $state.themeStyle.value === 'xiaohan'
+        |                                         ^^^^^^
+     98 |                    }">
+     99 |                 <!-- 节气特定装饰元素 -->
+    100 |                 <div v-if="$state.themeStyle.value === 'bailu'" class="absolute top-0 right-0 w-full h-full opacity-10 bailu-message-decoration"></div>
+[vue-tsc] Property '$state' does not exist on type 'CreateComponentPublicInstanceWithMixins<ToResolvedProps<{}, {}>, { channels: Ref<{ name: string; online: boolean; unread: number; members: number; }[], { name: string; online: boolean; unread: number; members: number; }[] | { ...; }[]>; activeChannel: Ref<...>; messages: Ref<...>; newMessage: Ref<...>; sendMessage: ...'.
+/Nuxt-game-platform/pages/chat/index.vue:100:28
+     98 |                    }">
+     99 |                 <!-- 节气特定装饰元素 -->
+  > 100 |                 <div v-if="$state.themeStyle.value === 'bailu'" class="absolute top-0 right-0 w-full h-full opacity-10 bailu-message-decoration"></div>
+        |                            ^^^^^^
+    101 |                 <div v-if="$state.themeStyle.value === 'hanlu'" class="absolute top-0 right-0 w-full h-full opacity-10 hanlu-message-decoration"></div>
+    102 |                 <div v-if="$state.themeStyle.value === 'xiaohan'" class="absolute top-0 right-0 w-full h-full opacity-10 xiaohan-message-decoration"></div>
+    103 |                 <span class="relative z-10">{{ message.text }}</span>
+[vue-tsc] Property '$state' does not exist on type 'CreateComponentPublicInstanceWithMixins<ToResolvedProps<{}, {}>, { channels: Ref<{ name: string; online: boolean; unread: number; members: number; }[], { name: string; online: boolean; unread: number; members: number; }[] | { ...; }[]>; activeChannel: Ref<...>; messages: Ref<...>; newMessage: Ref<...>; sendMessage: ...'.
+/Nuxt-game-platform/pages/chat/index.vue:101:28
+     99 |                 <!-- 节气特定装饰元素 -->
+    100 |                 <div v-if="$state.themeStyle.value === 'bailu'" class="absolute top-0 right-0 w-full h-full opacity-10 bailu-message-decoration"></div>
+  > 101 |                 <div v-if="$state.themeStyle.value === 'hanlu'" class="absolute top-0 right-0 w-full h-full opacity-10 hanlu-message-decoration"></div>
+        |                            ^^^^^^
+    102 |                 <div v-if="$state.themeStyle.value === 'xiaohan'" class="absolute top-0 right-0 w-full h-full opacity-10 xiaohan-message-decoration"></div>
+    103 |                 <span class="relative z-10">{{ message.text }}</span>
+    104 |               </div>
+[vue-tsc] Property '$state' does not exist on type 'CreateComponentPublicInstanceWithMixins<ToResolvedProps<{}, {}>, { channels: Ref<{ name: string; online: boolean; unread: number; members: number; }[], { name: string; online: boolean; unread: number; members: number; }[] | { ...; }[]>; activeChannel: Ref<...>; messages: Ref<...>; newMessage: Ref<...>; sendMessage: ...'.
+/Nuxt-game-platform/pages/chat/index.vue:102:28
+    100 |                 <div v-if="$state.themeStyle.value === 'bailu'" class="absolute top-0 right-0 w-full h-full opacity-10 bailu-message-decoration"></div>
+    101 |                 <div v-if="$state.themeStyle.value === 'hanlu'" class="absolute top-0 right-0 w-full h-full opacity-10 hanlu-message-decoration"></div>
+  > 102 |                 <div v-if="$state.themeStyle.value === 'xiaohan'" class="absolute top-0 right-0 w-full h-full opacity-10 xiaohan-message-decoration"></div>
+        |                            ^^^^^^
+    103 |                 <span class="relative z-10">{{ message.text }}</span>
+    104 |               </div>
+    105 |               <div class="text-xs text-gray-400 mt-1 flex justify-between">
+[vue-tsc] Property '$state' does not exist on type 'CreateComponentPublicInstanceWithMixins<ToResolvedProps<{}, {}>, { channels: Ref<{ name: string; online: boolean; unread: number; members: number; }[], { name: string; online: boolean; unread: number; members: number; }[] | { ...; }[]>; activeChannel: Ref<...>; messages: Ref<...>; newMessage: Ref<...>; sendMessage: ...'.
+/Nuxt-game-platform/pages/chat/index.vue:107:69
+    105 |               <div class="text-xs text-gray-400 mt-1 flex justify-between">
+    106 |                 <span>{{ message.time }}</span>
+  > 107 |                 <span v-if="message.isMe" :class="`text-neon-blue ${$state.themeStyle.value}-text`" v-show="message.read">已读</span>
+        |                                                                     ^^^^^^
+    108 |               </div>
+    109 |             </div>
+    110 |             <div v-if="message.isMe" class="w-8 h-8 rounded-full bg-neon-blue flex items-center justify-center text-white font-bold seasonal-avatar" :class="`${$state.themeStyle.value}-avatar`">
+[vue-tsc] Property '$state' does not exist on type 'CreateComponentPublicInstanceWithMixins<ToResolvedProps<{}, {}>, { channels: Ref<{ name: string; online: boolean; unread: number; members: number; }[], { name: string; online: boolean; unread: number; members: number; }[] | { ...; }[]>; activeChannel: Ref<...>; messages: Ref<...>; newMessage: Ref<...>; sendMessage: ...'.
+/Nuxt-game-platform/pages/chat/index.vue:110:161
+    108 |               </div>
+    109 |             </div>
+  > 110 |             <div v-if="message.isMe" class="w-8 h-8 rounded-full bg-neon-blue flex items-center justify-center text-white font-bold seasonal-avatar" :class="`${$state.themeStyle.value}-avatar`">
+        |                                                                                                                                                                 ^^^^^^
+    111 |               我
+    112 |             </div>
+    113 |           </div>
+[vue-tsc] Property '$state' does not exist on type 'CreateComponentPublicInstanceWithMixins<ToResolvedProps<{}, {}>, { channels: Ref<{ name: string; online: boolean; unread: number; members: number; }[], { name: string; online: boolean; unread: number; members: number; }[] | { ...; }[]>; activeChannel: Ref<...>; messages: Ref<...>; newMessage: Ref<...>; sendMessage: ...'.
+/Nuxt-game-platform/pages/chat/index.vue:117:81
+    115 |
+    116 |         <!-- 输入区域 -->
+  > 117 |         <div class="border-t border-neon-blue/30 pt-4 relative z-10" :class="`${$state.themeStyle.value}-input-area`">
+        |                                                                                 ^^^^^^
+    118 |           <div class="flex items-center space-x-2">
+    119 |             <button class="text-neon-purple hover:text-neon-blue transition-colors seasonal-icon-button" :class="`${$state.themeStyle.value}-icon-button`">
+    120 |               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+[vue-tsc] Property '$state' does not exist on type 'CreateComponentPublicInstanceWithMixins<ToResolvedProps<{}, {}>, { channels: Ref<{ name: string; online: boolean; unread: number; members: number; }[], { name: string; online: boolean; unread: number; members: number; }[] | { ...; }[]>; activeChannel: Ref<...>; messages: Ref<...>; newMessage: Ref<...>; sendMessage: ...'.
+/Nuxt-game-platform/pages/chat/index.vue:119:117
+    117 |         <div class="border-t border-neon-blue/30 pt-4 relative z-10" :class="`${$state.themeStyle.value}-input-area`">
+    118 |           <div class="flex items-center space-x-2">
+  > 119 |             <button class="text-neon-purple hover:text-neon-blue transition-colors seasonal-icon-button" :class="`${$state.themeStyle.value}-icon-button`">
+        |                                                                                                                     ^^^^^^
+    120 |               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    121 |                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+    122 |               </svg>
+[vue-tsc] Property '$state' does not exist on type 'CreateComponentPublicInstanceWithMixins<ToResolvedProps<{}, {}>, { channels: Ref<{ name: string; online: boolean; unread: number; members: number; }[], { name: string; online: boolean; unread: number; members: number; }[] | { ...; }[]>; activeChannel: Ref<...>; messages: Ref<...>; newMessage: Ref<...>; sendMessage: ...'.
+/Nuxt-game-platform/pages/chat/index.vue:124:117
+    122 |               </svg>
+    123 |             </button>
+  > 124 |             <button class="text-neon-purple hover:text-neon-blue transition-colors seasonal-icon-button" :class="`${$state.themeStyle.value}-icon-button`">
+        |                                                                                                                     ^^^^^^
+    125 |               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    126 |                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
+    127 |               </svg>
+[vue-tsc] Property '$state' does not exist on type 'CreateComponentPublicInstanceWithMixins<ToResolvedProps<{}, {}>, { channels: Ref<{ name: string; online: boolean; unread: number; members: number; }[], { name: string; online: boolean; unread: number; members: number; }[] | { ...; }[]>; activeChannel: Ref<...>; messages: Ref<...>; newMessage: Ref<...>; sendMessage: ...'.
+/Nuxt-game-platform/pages/chat/index.vue:131:31
+    129 |             <input type="text" placeholder="输入消息..." 
+    130 |                    class="flex-1 bg-secondary-dark border border-neon-blue/30 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-neon-blue seasonal-input" 
+  > 131 |                    :class="`${$state.themeStyle.value}-input`"
+        |                               ^^^^^^
+    132 |                    v-model="newMessage" 
+    133 |                    @keyup.enter="sendMessage" />
+    134 |             <button class="bg-neon-blue hover:bg-neon-purple text-white rounded-full p-2 transition-colors seasonal-button"
+[vue-tsc] Property '$state' does not exist on type 'CreateComponentPublicInstanceWithMixins<ToResolvedProps<{}, {}>, { channels: Ref<{ name: string; online: boolean; unread: number; members: number; }[], { name: string; online: boolean; unread: number; members: number; }[] | { ...; }[]>; activeChannel: Ref<...>; messages: Ref<...>; newMessage: Ref<...>; sendMessage: ...'.
+/Nuxt-game-platform/pages/chat/index.vue:135:29
+    133 |                    @keyup.enter="sendMessage" />
+    134 |             <button class="bg-neon-blue hover:bg-neon-purple text-white rounded-full p-2 transition-colors seasonal-button"
+  > 135 |                     :class="$state.themeStyle.value + '-button'"
+        |                             ^^^^^^
+    136 |                     @click="sendMessage">
+    137 |               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+    138 |                 <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
