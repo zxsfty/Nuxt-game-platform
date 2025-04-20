@@ -1,8 +1,20 @@
 <template>
   <div class="space-y-8">
-    <section class="hero-section bg-primary-light rounded-lg p-8 border-2 border-neon-blue">
-      <div class="max-w-3xl mx-auto text-center">
-        <h1 class="text-5xl font-bold mb-6 text-neon-blue">The broken with star sinks</h1>
+    <section class="hero-section bg-primary-light rounded-lg p-8 border-2 border-neon-blue relative overflow-hidden">
+      <!-- 节气特定装饰元素 -->
+      <div class="seasonal-pattern absolute inset-0 opacity-10" :class="`${$state.themeStyle.value}-pattern`"></div>
+      
+      <!-- 白露特效：露珠效果 -->
+      <div v-if="$state.themeStyle.value === 'bailu'" class="dew-drops-container"></div>
+      
+      <!-- 寒露特效：秋叶飘落 -->
+      <div v-if="$state.themeStyle.value === 'hanlu'" class="falling-leaves-container"></div>
+      
+      <!-- 小寒特效：雪花飘落 -->
+      <div v-if="$state.themeStyle.value === 'xiaohan'" class="snowflakes-container"></div>
+
+      <div class="max-w-3xl mx-auto text-center relative z-10">
+        <h1 class="text-5xl font-bold mb-6 text-neon-blue seasonal-text-glow">The broken with star sinks</h1>
         <p class="text-xl mb-8">一站式管理您的游戏，畅享无缝游戏体验</p>
         <div class="flex justify-center space-x-4">
           <button class="bg-neon-purple hover:bg-neon-blue text-white font-bold py-2 px-4 rounded-full transition-all">
@@ -99,17 +111,35 @@
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div v-for="(game, index) in installedGames" :key="index" class="bg-primary-light rounded-lg overflow-hidden hover:neon-border transition-all duration-300 group">
+            <div 
+              v-for="(game, index) in installedGames" 
+              :key="index" 
+              class="game-card bg-primary-light rounded-lg overflow-hidden transition-all duration-300 group" 
+              :class="`game-card-${$state.themeStyle.value}`"
+            >
               <div class="relative">
-                <img :src="game.image" :alt="game.name" class="w-full h-32 object-cover" />
+                <SeasonalImage 
+                  :src="game.image" 
+                  :alt="game.name" 
+                  :fallback-src="`https://via.placeholder.com/400x200?text=${encodeURIComponent(game.name)}`"
+                  image-class="w-full h-32 object-cover"
+                  :error-text="'无法加载游戏图片'"
+                />
+                <!-- 季节性装饰元素 -->
+                <div class="seasonal-decoration absolute top-2 right-2 z-10 seasonal-emoji-glow">
+                  <span v-if="$state.themeStyle.value === 'bailu'" class="text-lg">💧</span>
+                  <span v-if="$state.themeStyle.value === 'hanlu'" class="text-lg">🍂</span>
+                  <span v-if="$state.themeStyle.value === 'xiaohan'" class="text-lg">❄️</span>
+                </div>
                 <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-3">
-                  <div>
-                    <h3 class="text-lg font-bold group-hover:text-neon-blue transition-colors">{{ game.name }}</h3>
+                  <div class="w-full">
+                    <h3 class="text-lg font-bold group-hover:text-neon-blue transition-colors seasonal-text-hover">{{ game.name }}</h3>
                     <div class="flex items-center text-xs text-gray-400">
                       <span>{{ game.genre }}</span>
                       <span class="mx-1">•</span>
                       <span>{{ game.size }}</span>
                     </div>
+                    <p v-if="game.description" class="text-xs text-gray-300 mt-1 seasonal-description">{{ truncateText(game.description, 60) }}</p>
                   </div>
                 </div>
               </div>
@@ -118,7 +148,7 @@
                   <div class="w-3 h-3 rounded-full" :class="game.status === 'ready' ? 'bg-green-500' : 'bg-yellow-500'"></div>
                   <span class="text-sm">{{ game.status === 'ready' ? '已准备' : '需要更新' }}</span>
                 </div>
-                <button class="bg-neon-blue hover:bg-neon-purple text-white text-sm py-1 px-4 rounded-full transition-colors">
+                <button class="bg-neon-blue hover:bg-neon-purple text-white text-sm py-1 px-4 rounded-full transition-colors seasonal-button">
                   {{ game.status === 'ready' ? '启动' : '更新' }}
                 </button>
               </div>
@@ -135,7 +165,13 @@
               <div class="flex justify-between items-center mb-2">
                 <div class="flex items-center space-x-3">
                   <div class="w-10 h-10 rounded bg-primary-light overflow-hidden">
-                    <img :src="download.image" :alt="download.name" class="w-full h-full object-cover" />
+                    <SeasonalImage 
+                      :src="download.image" 
+                      :alt="download.name" 
+                      :fallback-src="`https://via.placeholder.com/50x50?text=${encodeURIComponent(download.name)}`"
+                      image-class="w-full h-full object-cover"
+                      :error-text="'无法加载图片'"
+                    />
                   </div>
                   <div>
                     <h4 class="font-medium">{{ download.name }}</h4>
@@ -181,7 +217,13 @@
             <div v-for="(update, index) in updates" :key="index" class="flex justify-between items-center p-3 bg-secondary-dark rounded-lg">
               <div class="flex items-center space-x-3">
                 <div class="w-10 h-10 rounded bg-primary-light overflow-hidden">
-                  <img :src="update.image" :alt="update.name" class="w-full h-full object-cover" />
+                  <SeasonalImage 
+                    :src="update.image" 
+                    :alt="update.name" 
+                    :fallback-src="`https://via.placeholder.com/50x50?text=${encodeURIComponent(update.name)}`"
+                    image-class="w-full h-full object-cover"
+                    :error-text="'无法加载图片'"
+                  />
                 </div>
                 <div>
                   <h4 class="font-medium">{{ update.name }}</h4>
@@ -207,75 +249,128 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, onMounted, watch } from 'vue';
+import { useState } from 'nuxt/app'; // 导入 useState
+import { throttle, truncateText } from '~/utils/index'; // 导入节流函数和文本截断函数
+import SeasonalImage from '~/components/SeasonalImage.vue';
+
+// 使用 themeStyle 状态
+const themeStyle = useState<string>('themeStyle', () => 'bailu'); // 默认为白露主题
+
+// 创建$state对象以与模板中的引用保持一致
+const $state = {
+  themeStyle
+};
+
+// 获取特效容器的引用
+const dewDropsContainer = ref<HTMLElement | null>(null);
+const fallingLeavesContainer = ref<HTMLElement | null>(null);
+const snowflakesContainer = ref<HTMLElement | null>(null);
+
+// 更新动画效果的函数
+const updateAnimations = throttle(() => {
+  // 在组件挂载后，获取容器引用
+  dewDropsContainer.value = document.querySelector('.dew-drops-container');
+  fallingLeavesContainer.value = document.querySelector('.falling-leaves-container');
+  snowflakesContainer.value = document.querySelector('.snowflakes-container');
+  
+  // 根据当前主题应用相应的动画效果
+  // 这里可以添加更多的动画逻辑
+}, 300);
+
+// 监听主题变化
+watch(() => $state.themeStyle.value, updateAnimations);
+
+// 组件挂载时初始化动画
+onMounted(updateAnimations);
 
 // 已安装游戏数据
 const installedGames = ref([
   {
-    name: '星际探索者',
-    genre: '太空探险',
+    name: '鸣潮：深海回响',
+    genre: '战术RPG',
     size: '45.2 GB',
     status: 'ready',
-    image: 'https://via.placeholder.com/400x200?text=星际探索者'
+    image: '/assets/images/games/wuthering-waves.svg',
+    description: '在这个末世废土中，与深海怪物战斗，探索未知的深渊奥秘。'
   },
   {
-    name: '量子战争',
-    genre: '科幻射击',
+    name: '明日方舟：终末地',
+    genre: '塔防策略',
     size: '68.7 GB',
     status: 'update',
-    image: 'https://via.placeholder.com/400x200?text=量子战争'
+    image: '/assets/images/games/arknights.svg',
+    description: '在灾变后的世界中，指挥干员们抵抗源石灾害，保卫最后的家园。'
   },
   {
-    name: '赛博朋克2099',
-    genre: '角色扮演',
+    name: '鸣潮：深蓝档案',
+    genre: '开放世界',
     size: '103.4 GB',
     status: 'ready',
-    image: 'https://via.placeholder.com/400x200?text=赛博朋克2099'
+    image: '/assets/images/games/wuthering-waves-blue.svg',
+    description: '探索神秘的深蓝海域，揭开远古文明的秘密，与强大的海洋生物战斗。'
   },
   {
-    name: '机械纪元',
-    genre: '机甲模拟',
+    name: '明日方舟：终焉地',
+    genre: '开放世界RPG',
+    size: '72.3 GB',
+    status: 'ready',
+    image: '/assets/images/games/arknights-endfield.svg',
+    description: '在泰拉大陆的另一端，探索未知的终焉之地，面对全新的挑战与机遇。'
+  },
+  {
+    name: '鸣潮：深渊猎人',
+    genre: '动作冒险',
+    size: '58.9 GB',
+    status: 'ready',
+    image: '/assets/images/games/wuthering-waves-abyss.svg',
+    description: '作为深渊猎人，潜入危险的深海区域，猎杀强大的深渊生物，收集稀有资源。'
+  },
+  {
+    name: '明日方舟：源石尘行动',
+    genre: '战术射击',
     size: '32.1 GB',
     status: 'ready',
-    image: 'https://via.placeholder.com/400x200?text=机械纪元'
+    image: '/assets/images/games/arknights-dust.svg',
+    description: '在切尔诺伯格的废墟中，执行高危任务，对抗感染者恐怖组织，保卫城市安全。'
   }
 ]);
 
 // 下载任务数据
 const downloads = ref([
   {
-    name: '虚空行者',
+    name: '鸣潮：深渊猎人',
     size: '78.5 GB',
     downloaded: '45.2 GB',
     progress: 58,
     speed: '12.5 MB/s',
     timeLeft: '约 45 分钟',
-    image: 'https://via.placeholder.com/50x50?text=虚空行者'
+    image: '/assets/images/games/wuthering-waves-icon.svg'
   },
   {
-    name: '量子战争 - 更新包',
+    name: '明日方舟：终末地 - 更新包',
     size: '12.3 GB',
     downloaded: '3.7 GB',
     progress: 30,
     speed: '8.2 MB/s',
     timeLeft: '约 18 分钟',
-    image: 'https://via.placeholder.com/50x50?text=量子战争'
+    image: '/assets/images/games/arknights-icon.svg'
   }
 ]);
 
 // 可用更新数据
 const updates = ref([
   {
-    name: '量子战争',
+    name: '明日方舟：终末地',
     version: 'v2.5.1',
     size: '12.3 GB',
-    image: 'https://via.placeholder.com/50x50?text=量子战争'
+    image: '/assets/images/games/arknights-icon.svg'
   },
   {
-    name: '星际探索者 - DLC',
-    version: '银河扩展包',
+    name: '鸣潮：深海回响 - DLC',
+    version: '深渊探索包',
     size: '8.7 GB',
-    image: 'https://via.placeholder.com/50x50?text=星际探索者'
+    image: '/assets/images/games/wuthering-waves-icon.svg'
   }
 ]);
 </script>

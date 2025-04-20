@@ -18,11 +18,11 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: '科幻游戏平台',
+      title: 'The broken with star sinks',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { key: 'description', name: 'description', content: '科幻风格的全栈游戏平台' }
+        { key: 'description', name: 'description', content: 'The broken with star sinks - 沉浸式科幻游戏平台' }
       ],
       link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
     },

@@ -1,4 +1,5 @@
 {
+  "extends": "./.nuxt/tsconfig.json",
   "compilerOptions": {
     "target": "ESNext",
     "module": "ESNext",
@@ -9,14 +10,11 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "lib": ["ESNext", "DOM"],
-    "types": ["vite/client", "node", "@types/webpack", "@nuxt/schema", "@types/node", "vue", "@vue/runtime-core", "@nuxt/types"],
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
       "~/*": ["./*"],
-      "@/*": ["./*"],
-      "nitropack/types": ["./node_modules/nitropack/types"],
-      "#imports": ["./.nuxt/types/nitro-imports"]
+      "@/*": ["./*"]
     }
   },
   "exclude": ["node_modules", ".nuxt", "dist"]

@@ -1,8 +1,15 @@
 <script setup>
 import { onMounted, watch } from 'vue';
+import { useRouter } from 'vue-router';
 // 引入主题状态
 const isDarkMode = useState('darkMode', () => true); // 默认为夜间模式
 const themeStyle = useState('themeStyle', () => 'bailu'); // 默认为白露主题
+const router = useRouter();
+
+// 导航函数
+const navigateTo = (path) => {
+  router.push(path);
+};
 
 // 节气主题信息
 const seasonalThemes = {
@@ -145,18 +152,18 @@ watch(themeStyle, (newTheme) => {
     </div>
     <header class="bg-transparent backdrop-blur-lg p-4 border-b border-primary-accent/20 shadow-theme transition-all duration-300 hover:shadow-lg sticky top-0 z-50">
       <!-- 节气特定导航栏背景 -->
-      <div class="absolute inset-0 bg-gradient-to-r from-transparent via-primary-dark/10 to-transparent backdrop-blur-lg"></div>
-      <div class="absolute inset-0 opacity-30 seasonal-pattern" :class="`${themeStyle}-pattern`"></div>
-      <div class="seasonal-accent-line" :class="`${themeStyle}-accent-line`"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-transparent via-primary-dark/10 to-transparent backdrop-blur-lg pointer-events-none"></div>
+      <div class="absolute inset-0 opacity-30 seasonal-pattern pointer-events-none" :class="`${themeStyle}-pattern`"></div>
+      <div class="seasonal-accent-line pointer-events-none" :class="`${themeStyle}-accent-line`"></div>
       <!-- 毛玻璃效果增强 -->
-      <div class="absolute inset-0 backdrop-filter backdrop-blur-md bg-opacity-10 bg-primary-dark/5"></div>
+      <div class="absolute inset-0 backdrop-filter backdrop-blur-md bg-opacity-10 bg-primary-dark/5 pointer-events-none"></div>
       <!-- 古风装饰边框 -->
-      <div class="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-primary-accent/40 to-transparent"></div>
-      <div class="absolute inset-x-0 bottom-0 h-[2px] bg-gradient-to-r from-transparent via-primary-accent/40 to-transparent"></div>
-      <div class="absolute inset-y-0 left-0 w-[2px] bg-gradient-to-b from-transparent via-primary-accent/40 to-transparent"></div>
-      <div class="absolute inset-y-0 right-0 w-[2px] bg-gradient-to-b from-transparent via-primary-accent/40 to-transparent"></div>
+      <div class="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-primary-accent/40 to-transparent pointer-events-none"></div>
+      <div class="absolute inset-x-0 bottom-0 h-[2px] bg-gradient-to-r from-transparent via-primary-accent/40 to-transparent pointer-events-none"></div>
+      <div class="absolute inset-y-0 left-0 w-[2px] bg-gradient-to-b from-transparent via-primary-accent/40 to-transparent pointer-events-none"></div>
+      <div class="absolute inset-y-0 right-0 w-[2px] bg-gradient-to-b from-transparent via-primary-accent/40 to-transparent pointer-events-none"></div>
       <!-- 节气特定装饰元素 -->
-      <div v-if="themeStyle === 'bailu'" class="seasonal-header-decoration bailu-decoration">
+      <div v-if="themeStyle === 'bailu'" class="seasonal-header-decoration bailu-decoration pointer-events-none">
         <div class="seasonal-icon animate-pulse">🍃</div>
         <div class="seasonal-header-particles">
           <span class="particle-1"></span>
@@ -170,7 +177,7 @@ watch(themeStyle, (newTheme) => {
         <div class="dew-drop header-dew-drop-2"></div>
         <div class="bailu-glow-effect header-glow-effect"></div>
       </div>
-      <div v-if="themeStyle === 'hanlu'" class="seasonal-header-decoration hanlu-decoration">
+      <div v-if="themeStyle === 'hanlu'" class="seasonal-header-decoration hanlu-decoration pointer-events-none">
         <div class="seasonal-icon animate-pulse">🍂</div>
         <div class="seasonal-header-particles">
           <span class="particle-1"></span>
@@ -184,7 +191,7 @@ watch(themeStyle, (newTheme) => {
         <div class="autumn-leaf header-leaf-2"></div>
         <div class="autumn-leaf header-leaf-3"></div>
       </div>
-      <div v-if="themeStyle === 'xiaohan'" class="seasonal-header-decoration xiaohan-decoration">
+      <div v-if="themeStyle === 'xiaohan'" class="seasonal-header-decoration xiaohan-decoration pointer-events-none">
         <div class="seasonal-icon animate-pulse">❄️</div>
         <div class="seasonal-header-particles">
           <span class="particle-1"></span>
@@ -198,18 +205,19 @@ watch(themeStyle, (newTheme) => {
         <div class="xiaohan-frost-glow header-frost-glow-1"></div>
         <div class="xiaohan-frost-glow header-frost-glow-2"></div>
       </div>
-      <div class="container mx-auto flex justify-between items-center relative z-10 theme-transition">
+      <div class="container mx-auto flex justify-between items-center relative z-[101] theme-transition">
         <h1 class="text-2xl font-serif font-bold hover:text-primary-light transition-all transform hover:scale-105 cursor-pointer" :style="`color: rgb(var(--nav-accent-color))`">
           游戏平台
         </h1>
-        <nav class="flex items-center space-x-6">
+        <nav class="flex items-center space-x-6 relative z-[101]">
           <NuxtLink 
             to="/" 
-            class="nav-link transition-all duration-300 relative group transform hover:scale-105"
+            class="nav-link transition-all duration-300 relative group transform hover:scale-105 z-[100]"
             :class="`nav-link-${themeStyle}`"
             :style="`color: rgb(var(--nav-text-color))`"
             active-class="font-bold"
             :active-class-style="`color: rgb(var(--nav-accent-color))`"
+            @click="navigateTo('/')"
           >
             首页
             <span class="absolute bottom-0 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300 theme-transition" :style="`background-color: rgb(var(--nav-hover-color))`"></span>
@@ -219,11 +227,12 @@ watch(themeStyle, (newTheme) => {
           </NuxtLink>
           <NuxtLink 
             to="/games" 
-            class="nav-link transition-all duration-300 relative group transform hover:scale-105"
+            class="nav-link transition-all duration-300 relative group transform hover:scale-105 z-[100]"
             :class="`nav-link-${themeStyle}`"
             :style="`color: rgb(var(--nav-text-color))`"
             active-class="font-bold"
             :active-class-style="`color: rgb(var(--nav-accent-color))`"
+            @click="navigateTo('/games')"
           >
             游戏信息
             <span class="absolute bottom-0 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300" :style="`background-color: rgb(var(--nav-hover-color))`"></span>
@@ -233,11 +242,12 @@ watch(themeStyle, (newTheme) => {
           </NuxtLink>
           <NuxtLink 
             to="/forum" 
-            class="nav-link transition-all duration-300 relative group transform hover:scale-105"
+            class="nav-link transition-all duration-300 relative group transform hover:scale-105 z-[100]"
             :class="`nav-link-${themeStyle}`"
             :style="`color: rgb(var(--nav-text-color))`"
             active-class="font-bold"
             :active-class-style="`color: rgb(var(--nav-accent-color))`"
+            @click="navigateTo('/forum')"
           >
             论坛
             <span class="absolute bottom-0 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300" :style="`background-color: rgb(var(--nav-hover-color))`"></span>
@@ -247,22 +257,28 @@ watch(themeStyle, (newTheme) => {
           </NuxtLink>
           <NuxtLink 
             to="/launcher" 
-            class="transition-all duration-300 relative group transform hover:scale-105"
-            :style="`color: rgb(var(--nav-text-color))`"
-            active-class="font-bold"
-            :active-class-style="`color: rgb(var(--nav-accent-color))`"
-          >
-            启动器
-            <span class="absolute bottom-0 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300" :style="`background-color: rgb(var(--nav-hover-color))`"></span>
-          </NuxtLink>
-
-          <NuxtLink 
-            to="/chat" 
-            class="nav-link transition-all duration-300 relative group transform hover:scale-105"
+            class="nav-link transition-all duration-300 relative group transform hover:scale-105 z-[100]"
             :class="`nav-link-${themeStyle}`"
             :style="`color: rgb(var(--nav-text-color))`"
             active-class="font-bold"
             :active-class-style="`color: rgb(var(--nav-accent-color))`"
+            @click="navigateTo('/launcher')"
+          >
+            启动器
+            <span class="absolute bottom-0 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300" :style="`background-color: rgb(var(--nav-hover-color))`"></span>
+            <div class="nav-decoration" :class="`nav-decoration-${themeStyle}`">
+              <span class="nav-particle"></span>
+            </div>
+          </NuxtLink>
+
+          <NuxtLink 
+            to="/chat" 
+            class="nav-link transition-all duration-300 relative group transform hover:scale-105 z-[100]"
+            :class="`nav-link-${themeStyle}`"
+            :style="`color: rgb(var(--nav-text-color))`"
+            active-class="font-bold"
+            :active-class-style="`color: rgb(var(--nav-accent-color))`"
+            @click="navigateTo('/chat')"
           >
             聊天
             <span class="absolute bottom-0 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300" :style="`background-color: rgb(var(--nav-hover-color))`"></span>
@@ -272,11 +288,12 @@ watch(themeStyle, (newTheme) => {
           </NuxtLink>
           <NuxtLink 
             to="/market" 
-            class="nav-link transition-all duration-300 relative group transform hover:scale-105"
+            class="nav-link transition-all duration-300 relative group transform hover:scale-105 z-[100]"
             :class="`nav-link-${themeStyle}`"
             :style="`color: rgb(var(--nav-text-color))`"
             active-class="font-bold"
             :active-class-style="`color: rgb(var(--nav-accent-color))`"
+            @click="navigateTo('/market')"
           >
             交易
             <span class="absolute bottom-0 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300" :style="`background-color: rgb(var(--nav-hover-color))`"></span>
@@ -286,11 +303,12 @@ watch(themeStyle, (newTheme) => {
           </NuxtLink>
           <NuxtLink 
             to="/guides" 
-            class="nav-link transition-all duration-300 relative group transform hover:scale-105"
+            class="nav-link transition-all duration-300 relative group transform hover:scale-105 z-[100]"
             :class="`nav-link-${themeStyle}`"
             :style="`color: rgb(var(--nav-text-color))`"
             active-class="font-bold"
             :active-class-style="`color: rgb(var(--nav-accent-color))`"
+            @click="navigateTo('/guides')"
           >
             攻略
             <span class="absolute bottom-0 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300" :style="`background-color: rgb(var(--nav-hover-color))`"></span>
@@ -300,11 +318,12 @@ watch(themeStyle, (newTheme) => {
           </NuxtLink>
           <NuxtLink 
             to="/about" 
-            class="nav-link transition-all duration-300 relative group transform hover:scale-105"
+            class="nav-link transition-all duration-300 relative group transform hover:scale-105 z-[100]"
             :class="`nav-link-${themeStyle}`"
             :style="`color: rgb(var(--nav-text-color))`"
             active-class="font-bold"
             :active-class-style="`color: rgb(var(--nav-accent-color))`"
+            @click="navigateTo('/about')"
           >
             关于我们
             <span class="absolute bottom-0 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300" :style="`background-color: rgb(var(--nav-hover-color))`"></span>
@@ -313,7 +332,7 @@ watch(themeStyle, (newTheme) => {
             </div>
           </NuxtLink>
           <div class="ml-4 relative group">
-            <button class="bg-primary-accent/80 text-primary-light px-4 py-1.5 rounded-md hover:shadow-theme transition-all duration-300 transform hover:scale-105 overflow-hidden relative border border-primary-accent/50 theme-transition">
+            <button class="bg-primary-accent/80 text-primary-light px-4 py-1.5 rounded-md hover:shadow-theme transition-all duration-300 transform hover:scale-105 overflow-hidden relative border border-primary-accent/50 theme-transition z-[100]">
               <span class="relative z-10">登录/注册</span>
               <span class="absolute inset-0 bg-primary-accent opacity-0 group-hover:opacity-100 transition-all duration-500"></span>
             </button>
@@ -323,19 +342,19 @@ watch(themeStyle, (newTheme) => {
     </header>
 
     <main class="flex-grow container mx-auto p-4 relative">
-      <div class="absolute inset-0 opacity-5 seasonal-pattern"></div>
-      <div class="seasonal-floating-elements"></div>
-      <NuxtPage class="page-transition relative z-10" />
+      <div class="absolute inset-0 opacity-5 seasonal-pattern pointer-events-none"></div>
+      <div class="seasonal-floating-elements pointer-events-none"></div>
+      <NuxtPage class="page-transition relative z-[50]" />
     </main>
     
     <!-- 主题控制面板固定在右下角 -->
     <ThemeControlPanel />
 
     <footer class="bg-primary-dark/95 backdrop-blur-md p-4 border-t border-primary-accent/30 text-center transition-all duration-300 hover:shadow-theme">
-      <div class="absolute inset-0 opacity-10 seasonal-pattern"></div>
-      <div class="seasonal-accent-line bottom-accent"></div>
+      <div class="absolute inset-0 opacity-10 seasonal-pattern pointer-events-none"></div>
+      <div class="seasonal-accent-line bottom-accent pointer-events-none"></div>
       <!-- 节气特定页脚装饰 -->
-      <div class="seasonal-footer-decoration">
+      <div class="seasonal-footer-decoration pointer-events-none">
         <div v-if="themeStyle === 'bailu'" class="seasonal-footer-icon bailu-footer-icon">🍃</div>
         <div v-if="themeStyle === 'hanlu'" class="seasonal-footer-icon hanlu-footer-icon">🍂</div>
         <div v-if="themeStyle === 'xiaohan'" class="seasonal-footer-icon xiaohan-footer-icon">❄️</div>
@@ -806,9 +825,12 @@ header::after {
 
 /* 导航链接节气特定样式和动画效果 */
 .nav-link {
-  padding: 0.5rem 0.75rem;
   position: relative;
-  overflow: hidden;
+  padding: 0.5rem 0.75rem;
+  overflow: visible;
+  z-index: 20;
+  cursor: pointer;
+  pointer-events: auto;
 }
 
 .nav-link::after {
@@ -837,6 +859,16 @@ header::after {
   text-shadow: 0 0 5px rgba(215, 190, 105, 0.5);
 }
 
+.nav-decoration {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
 .nav-decoration-bailu .nav-particle {
   position: absolute;
   width: 4px;
@@ -845,6 +877,7 @@ header::after {
   border-radius: 50%;
   opacity: 0;
   pointer-events: none;
+  z-index: 1;
 }
 
 .nav-link-bailu:hover .nav-particle {
@@ -869,6 +902,7 @@ header::after {
   border-radius: 50%;
   opacity: 0;
   pointer-events: none;
+  z-index: 1;
 }
 
 .nav-link-hanlu:hover .nav-particle {
@@ -893,6 +927,7 @@ header::after {
   border-radius: 50%;
   opacity: 0;
   pointer-events: none;
+  z-index: 1;
 }
 
 .nav-link-xiaohan:hover .nav-particle {

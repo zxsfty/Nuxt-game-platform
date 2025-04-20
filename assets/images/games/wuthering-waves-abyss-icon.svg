@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#051e3e" />
+      <stop offset="100%" stop-color="#251e3e" />
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <circle cx="100" cy="100" r="100" fill="url(#bg-gradient)" />
+  
+  <!-- Glowing elements -->
+  <circle cx="60" cy="60" r="15" fill="#3a86ff" opacity="0.8" filter="url(#glow)" />
+  <circle cx="40" cy="50" r="8" fill="#3a86ff" opacity="0.6" filter="url(#glow)" />
+  
+  <!-- Abstract structures -->
+  <path d="M110,200 L130,80 L150,200 Z" fill="#480ca8" opacity="0.7" />
+  <path d="M150,200 L170,100 L190,200 Z" fill="#480ca8" opacity="0.7" />
+  
+  <!-- Geometric elements -->
+  <rect x="125" y="120" width="10" height="80" fill="#3a86ff" opacity="0.5" />
+  <rect x="165" y="140" width="10" height="60" fill="#3a86ff" opacity="0.5" />
+  
+  <!-- Water/abyss effect -->
+  <path d="M0,200 L200,200 L200,150 Q150,160 100,150 Q50,140 0,160 Z" fill="#0b525b" opacity="0.7" />
+  
+  <!-- Logo symbol -->
+  <text x="100" y="90" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#ffffff" text-anchor="middle" filter="url(#glow)">AH</text>
+  <text x="100" y="60" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#3a86ff" text-anchor="middle">WW</text>
+  
+  <!-- Subtle grid overlay -->
+  <path d="M0,100 L200,100 M100,0 L100,200" stroke="#ffffff" stroke-width="0.5" opacity="0.1" />
+</svg>
