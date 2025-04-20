@@ -1,34 +1,28 @@
 <template>
-  <div class="space-y-8 py-6 px-4">
+  <div class="space-y-8 py-6 px-4 relative">
+    <!-- 季节性背景 -->
+    <SeasonalBackground />
+    
     <section class="hero-section bg-primary-light rounded-lg p-8 border border-primary-accent/30 transform transition-all duration-500 hover:shadow-theme relative overflow-hidden backdrop-blur-sm">
-      <!-- 节气特定装饰元素 -->
-      <div class="seasonal-pattern absolute inset-0 opacity-10" :class="`${$state.themeStyle.value}-pattern`"></div>
-      
-      <!-- 白露特效：露珠效果 -->
-      <div v-if="$state.themeStyle.value === 'bailu'" class="dew-drops-container"></div>
-      
-      <!-- 寒露特效：秋叶飘落 -->
-      <div v-if="$state.themeStyle.value === 'hanlu'" class="falling-leaves-container"></div>
-      
-      <!-- 小寒特效：雪花飘落 -->
-      <div v-if="$state.themeStyle.value === 'xiaohan'" class="snowflakes-container"></div>
-      
-      <div class="hero-glow absolute inset-0 opacity-30"></div>
-      <div class="max-w-3xl mx-auto text-center relative z-10">
-        <h1 class="text-5xl font-bold mb-6 text-primary-accent animate-fadeIn font-serif seasonal-text-glow">
-          The broken with star sinks
-        </h1>
-        <p class="text-xl mb-8 animate-fadeIn" style="animation-delay: 1.2s">The broken with star sinks</p>
-        <button class="bg-primary-accent/80 hover:bg-primary-accent text-primary-light font-bold py-3 px-8 rounded-full transition-all transform hover:scale-105 relative overflow-hidden group">
-          <span class="relative z-10 inline-flex items-center">
-            立即开始
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 transform transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
-          </span>
-          <span class="absolute inset-0 bg-primary-accent opacity-0 group-hover:opacity-100 transition-all duration-300"></span>
-        </button>
-      </div>
+      <!-- 使用季节场景组件 -->
+      <SeasonalScene>
+        <div class="hero-glow absolute inset-0 opacity-30"></div>
+        <div class="max-w-3xl mx-auto text-center relative z-10">
+          <h1 class="text-5xl font-bold mb-6 text-primary-accent animate-fadeIn font-serif seasonal-text-glow">
+            The broken with star sinks
+          </h1>
+          <p class="text-xl mb-8 animate-fadeIn" style="animation-delay: 1.2s">The broken with star sinks</p>
+          <button class="bg-primary-accent/80 hover:bg-primary-accent text-primary-light font-bold py-3 px-8 rounded-full transition-all transform hover:scale-105 relative overflow-hidden group">
+            <span class="relative z-10 inline-flex items-center">
+              立即开始
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 transform transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </span>
+            <span class="absolute inset-0 bg-primary-accent opacity-0 group-hover:opacity-100 transition-all duration-300"></span>
+          </button>
+        </div>
+      </SeasonalScene>
     </section>
 
     <section class="features-section grid md:grid-cols-3 gap-6">
@@ -105,6 +99,8 @@
 <script setup lang="ts">
 import { useState } from 'nuxt/app'; // 引入 Nuxt 的 useState
 import { ref, onMounted, watch, nextTick } from 'vue'; // 引入 ref, onMounted, watch, nextTick
+import SeasonalScene from '~/components/SeasonalScene.vue'; // 引入季节场景组件
+import SeasonalBackground from '~/components/SeasonalBackground.vue'; // 引入季节背景组件
 
 // 使用Nuxt的useState来获取当前主题状态
 // 统一使用$state.themeStyle.value的方式访问主题状态

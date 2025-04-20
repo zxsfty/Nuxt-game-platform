@@ -28,6 +28,8 @@
     "esbuild-loader": "^4.3.0",
     "mini-css-extract-plugin": "^2.9.2",
     "nitropack": "^2.11.8",
+    "sass": "^1.86.3",
+    "sass-embedded": "^1.86.3",
     "typescript": "^5.2.0",
     "vue-loader": "^17.4.2",
     "vue-tsc": "^2.2.8"

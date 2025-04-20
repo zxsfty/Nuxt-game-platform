@@ -5,18 +5,20 @@
 @layer base {
   :root {
     /* 暗色模式（默认）变量 - 更深沉的色调 */
-    --color-primary-dark: 12, 12, 18; /* 更深沉的黑色 */
-    --color-primary-light: 235, 235, 245; /* 柔和的白色 */
-    --color-primary-accent: 200, 55, 55; /* 深红色 */
+    --color-primary-dark: #121a2b;
+    --color-primary-light: #eef2ff;
+    --color-primary-accent: #4f6bff;
+    --color-primary-accent-hover: #3e56cc;
     
-    --color-secondary-dark: 25, 22, 60; /* 更深的蓝色 */
-    --color-secondary-light: 79, 70, 219; /* 柔和的亮蓝色 */
+    --color-secondary-dark: #1c2a4a;
+    --color-secondary-light: #a3b1d6;
     --color-secondary-accent: 157, 139, 230; /* 柔和的紫色 */
     
-    --color-neon-blue: 69, 130, 226; /* 更深的蓝色 */
-    --color-neon-cyan: 70, 215, 215; /* 柔和的青色 */
-    --color-neon-red: 215, 70, 70; /* 柔和的红色 */
-    --color-neon-purple: 137, 71, 204; /* 柔和的紫色 */
+    --color-neon-blue: #4f6bff;
+    --color-neon-blue-rgb: 79, 107, 255;
+    --color-neon-purple: #9c6fff;
+    --color-neon-red: #ff4f7b;
+    --color-neon-green: #4fffae;
     --color-neon-pink: 206, 82, 143; /* 柔和的粉色 */
     
     /* 护眼色调 - 更深沉的色调 */
@@ -25,6 +27,21 @@
     
     /* 主题切换过渡效果 */
     --theme-transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+    
+    /* 动画持续时间 */
+    --transition-fast: 150ms;
+    --transition-normal: 300ms;
+    --transition-slow: 500ms;
+    
+    /* 阴影 */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    
+    /* 特效阴影 */
+    --shadow-neon-blue: 0 0 15px rgba(var(--color-neon-blue-rgb), 0.5);
+    --shadow-neon-purple: 0 0 15px rgba(156, 111, 255, 0.5);
   }
   
   /* 亮色模式变量 - 护眼优化 */
@@ -64,7 +81,9 @@
   
   /* 基础霓虹文字效果 - 护眼优化 */
   .neon-text {
-    text-shadow: 0 0 3px rgba(var(--color-neon-blue), 0.6), 0 0 7px rgba(var(--color-neon-blue), 0.3);
+    text-shadow: 0 0 5px rgba(0, 123, 255, 0.7),
+                  0 0 10px rgba(0, 123, 255, 0.5), 
+                  0 0 15px rgba(0, 123, 255, 0.3);
     transition: text-shadow 0.5s ease;
   }
   
@@ -312,5 +331,59 @@
   
   .animate-fadeIn {
     animation: fadeIn 0.5s ease forwards;
+  }
+  
+  /* 玻璃拟态效果 */
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Button glow effect */
+  .btn-glow {
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 5px rgba(0, 140, 255, 0.5);
+    transition: all 0.3s ease;
+  }
+  
+  .btn-glow::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    z-index: -1;
+    background: linear-gradient(45deg, #0062ff, #00a1ff, #0062ff);
+    background-size: 400%;
+    border-radius: 9999px;
+    filter: blur(5px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .btn-glow:hover::before {
+    opacity: 1;
+    animation: glowing 1.5s linear infinite;
+  }
+  
+  @keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+  }
+  
+  /* Card hover effect */
+  .card-hover-effect {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .card-hover-effect:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 123, 255, 0.15);
   }
 }
