@@ -5,7 +5,7 @@
     
     <!-- 主视觉图像 -->
     <section class="main-visual relative h-80 rounded-lg overflow-hidden">
-      <img src="/assets/images/games/wuthering-waves-abyss.svg" alt="游戏攻略" class="w-full h-full object-cover">
+      <img src="~/assets/images/games/wuthering-waves-abyss.svg" alt="游戏攻略" class="w-full h-full object-cover">
       <div class="absolute inset-0 bg-gradient-to-t from-secondary-dark/70 to-transparent"></div>
       <div class="absolute bottom-0 left-0 p-8 w-full">
         <h1 class="text-5xl font-bold mb-2 text-primary-accent font-serif">游戏攻略</h1>
@@ -129,11 +129,11 @@ useHead({
 
 // 攻略分类
 const guideCategories = ref([
-  { name: '新手指南', icon: '/assets/images/games/wuthering-waves-icon.svg', id: 'beginners' },
-  { name: '角色攻略', icon: '/assets/images/games/arknights-icon.svg', id: 'characters' },
-  { name: '装备搭配', icon: '/assets/images/games/wuthering-waves-abyss-icon.svg', id: 'equipment' },
-  { name: '副本攻略', icon: '/assets/images/games/arknights-endfield-icon.svg', id: 'dungeons' },
-  { name: '竞技技巧', icon: '/assets/images/games/wuthering-waves-abyss-icon.svg', id: 'pvp' }
+  { name: '新手指南', icon: '~/assets/images/games/wuthering-waves-icon.svg', id: 'beginners' },
+  { name: '角色攻略', icon: '~/assets/images/games/arknights-icon.svg', id: 'characters' },
+  { name: '装备搭配', icon: '~/assets/images/games/wuthering-waves-abyss-icon.svg', id: 'equipment' },
+  { name: '副本攻略', icon: '~/assets/images/games/arknights-endfield-icon.svg', id: 'dungeons' },
+  { name: '竞技技巧', icon: '~/assets/images/games/wuthering-waves-abyss-icon.svg', id: 'pvp' }
 ]);
 
 // 热门攻略
@@ -141,19 +141,19 @@ const featuredGuides = ref([
   {
     title: '鸣潮：深海回响 - 全角色技能解析',
     description: '详细分析鸣潮游戏中所有角色的技能、特性以及最佳使用场景，助你轻松通关各类挑战。',
-    image: '/assets/images/games/wuthering-waves.svg',
+    image: '~/assets/images/games/wuthering-waves.svg',
     category: '角色攻略',
     author: '游戏达人',
-    authorAvatar: '/assets/images/games/wuthering-waves-icon.svg',
+    authorAvatar: '~/assets/images/games/wuthering-waves-icon.svg',
     date: '2023-12-10'
   },
   {
     title: '明日方舟：终末地 - 最强阵容搭配指南',
     description: '根据不同关卡特性，提供最佳阵容搭配方案，包括干员选择、技能搭配及部署策略。',
-    image: '/assets/images/games/arknights.svg',
+    image: '~/assets/images/games/arknights.svg',
     category: '阵容搭配',
     author: '方舟专家',
-    authorAvatar: '/assets/images/games/arknights-icon.svg',
+    authorAvatar: '~/assets/images/games/arknights-icon.svg',
     date: '2023-11-25'
   }
 ]);
@@ -163,40 +163,40 @@ const latestGuides = ref([
   {
     title: '火星殖民 - 基地建设攻略',
     description: '如何在有限的资源下高效规划殖民地布局，提高资源产出效率，确保可持续发展。',
-    image: '/assets/images/games/wuthering-waves-abyss.svg',
+    image: '~/assets/images/games/wuthering-waves-abyss.svg',
     category: '基地建设',
     author: '星际开拓者',
-    authorAvatar: '/assets/images/games/wuthering-waves-abyss-icon.svg',
+    authorAvatar: '~/assets/images/games/wuthering-waves-abyss-icon.svg',
     date: '2023-12-15',
     views: '4,289'
   },
   {
     title: '神经网络 - 黑客技能全解析',
     description: '详解神经网络游戏中各类黑客技能的解锁条件、使用方法及组合效果，帮你成为顶级黑客。',
-    image: '/assets/images/games/arknights-endfield.svg',
+    image: '~/assets/images/games/arknights-endfield.svg',
     category: '技能解析',
     author: '数字幽灵',
-    authorAvatar: '/assets/images/games/arknights-endfield-icon.svg',
+    authorAvatar: '~/assets/images/games/arknights-endfield-icon.svg',
     date: '2023-12-12',
     views: '3,567'
   },
   {
     title: '时间守护者 - 历史线修复指南',
     description: '针对不同历史时期的特点，提供最佳任务路线与关键选择点分析，确保历史线修复的最优结果。',
-    image: '/assets/images/games/arknights.svg',
+    image: '~/assets/images/games/arknights.svg',
     category: '任务攻略',
     author: '时间旅行者',
-    authorAvatar: '/assets/images/games/arknights-icon.svg',
+    authorAvatar: '~/assets/images/games/arknights-icon.svg',
     date: '2023-12-08',
     views: '2,984'
   },
   {
     title: '深海探险 - 装备打造与升级策略',
     description: '详细介绍深海探险中各类装备的获取途径、升级材料及最佳属性搭配，助你应对深海危机。',
-    image: '/assets/images/games/wuthering-waves.svg',
+    image: '~/assets/images/games/wuthering-waves.svg',
     category: '装备攻略',
     author: '深海猎人',
-    authorAvatar: '/assets/images/games/wuthering-waves-icon.svg',
+    authorAvatar: '~/assets/images/games/wuthering-waves-icon.svg',
     date: '2023-12-05',
     views: '3,128'
   }

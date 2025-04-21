@@ -13,7 +13,7 @@ const seasonalThemes = {
     season: '秋季',
     color: 'rgb(168, 160, 122)',
     accentColor: 'rgb(215, 190, 105)',
-    preview: '/assets/images/bailu-preview.jpg'
+    preview: '~/assets/images/bailu-preview.jpg'
   },
   hanlu: {
     name: '寒露',
@@ -21,7 +21,7 @@ const seasonalThemes = {
     season: '深秋',
     color: 'rgb(106, 133, 182)',
     accentColor: 'rgb(80, 140, 190)',
-    preview: '/assets/images/hanlu-preview.jpg'
+    preview: '~/assets/images/hanlu-preview.jpg'
   },
   xiaohan: {
     name: '小寒',
@@ -29,7 +29,7 @@ const seasonalThemes = {
     season: '冬季',
     color: 'rgb(169, 169, 169)',
     accentColor: 'rgb(202, 202, 212)',
-    preview: '/assets/images/xiaohan-preview.jpg'
+    preview: '~/assets/images/xiaohan-preview.jpg'
   }
 };
 
@@ -110,7 +110,7 @@ const applyTheme = (theme) => {
         @click="applyTheme('bailu')"
       >
         <div class="theme-card-inner">
-          <div class="theme-preview-image" style="background-image: url('/assets/images/bailu-preview.jpg')"></div>
+          <div class="theme-preview-image" style="background-image: url('~/assets/images/bailu-preview.jpg')"></div>
           <div class="theme-content">
             <div class="theme-name">{{ seasonalThemes.bailu.name }}</div>
             <div class="theme-description text-sm opacity-80">{{ seasonalThemes.bailu.description }}</div>
@@ -126,7 +126,7 @@ const applyTheme = (theme) => {
         @click="applyTheme('hanlu')"
       >
         <div class="theme-card-inner">
-          <div class="theme-preview-image" style="background-image: url('/assets/images/hanlu-preview.jpg')"></div>
+          <div class="theme-preview-image" style="background-image: url('~/assets/images/hanlu-preview.jpg')"></div>
           <div class="theme-content">
             <div class="theme-name">{{ seasonalThemes.hanlu.name }}</div>
             <div class="theme-description text-sm opacity-80">{{ seasonalThemes.hanlu.description }}</div>
@@ -142,7 +142,7 @@ const applyTheme = (theme) => {
         @click="applyTheme('xiaohan')"
       >
         <div class="theme-card-inner">
-          <div class="theme-preview-image" style="background-image: url('/assets/images/xiaohan-preview.jpg')"></div>
+          <div class="theme-preview-image" style="background-image: url('~/assets/images/xiaohan-preview.jpg')"></div>
           <div class="theme-content">
             <div class="theme-name">{{ seasonalThemes.xiaohan.name }}</div>
             <div class="theme-description text-sm opacity-80">{{ seasonalThemes.xiaohan.description }}</div>

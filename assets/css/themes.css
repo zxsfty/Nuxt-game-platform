@@ -43,7 +43,7 @@
   background-color: rgb(var(--color-primary-dark));
   color: rgb(var(--color-primary-light));
   transition: all 0.5s ease;
-  background-image: url('/assets/images/bailu-bg.jpg');
+  background-image: url('~/assets/images/bailu-bg.jpg');
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
@@ -97,7 +97,7 @@
   background-color: rgb(var(--color-primary-dark));
   color: rgb(var(--color-primary-light));
   transition: all 0.5s ease;
-  background-image: url('/assets/images/hanlu-bg.jpg');
+  background-image: url('~/assets/images/hanlu-bg.jpg');
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
@@ -152,7 +152,7 @@
   background-color: rgb(var(--color-primary-dark));
   color: rgb(var(--color-primary-light));
   transition: all 0.5s ease;
-  background-image: url('/assets/images/xiaohan-bg.jpg');
+  background-image: url('~/assets/images/xiaohan-bg.jpg');
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
@@ -380,30 +380,21 @@
 }
 
 .theme-bailu .seasonal-pattern {
-  background-image: url('/assets/images/bailu-bg.jpg'),
-                    radial-gradient(circle at 10% 20%, rgba(168, 160, 122, 0.15) 0%, transparent 50%),
-                    radial-gradient(circle at 90% 80%, rgba(168, 160, 122, 0.15) 0%, transparent 50%),
-                    radial-gradient(circle at 50% 50%, rgba(168, 160, 122, 0.1) 0%, transparent 70%);
+  background-image: url('~/assets/images/bailu-pattern.png');
   background-size: cover, 100% 100%, 100% 100%, 200% 200%;
   background-blend-mode: overlay;
   box-shadow: inset 0 0 100px rgba(215, 190, 105, 0.2);
 }
 
 .theme-hanlu .seasonal-pattern {
-  background-image: url('/assets/images/hanlu-bg.jpg'),
-                    radial-gradient(circle at 10% 20%, rgba(106, 133, 182, 0.15) 0%, transparent 50%),
-                    radial-gradient(circle at 90% 80%, rgba(106, 133, 182, 0.15) 0%, transparent 50%),
-                    radial-gradient(circle at 50% 50%, rgba(106, 133, 182, 0.1) 0%, transparent 70%);
+  background-image: url('~/assets/images/hanlu-pattern.png');
   background-size: cover, 100% 100%, 100% 100%, 200% 200%;
   background-blend-mode: overlay;
   box-shadow: inset 0 0 100px rgba(80, 140, 190, 0.2);
 }
 
 .theme-xiaohan .seasonal-pattern {
-  background-image: url('/assets/images/xiaohan-bg.jpg'),
-                    radial-gradient(circle at 10% 20%, rgba(192, 192, 192, 0.15) 0%, transparent 50%),
-                    radial-gradient(circle at 90% 80%, rgba(192, 192, 192, 0.15) 0%, transparent 50%),
-                    radial-gradient(circle at 50% 50%, rgba(192, 192, 192, 0.1) 0%, transparent 70%);
+  background-image: url('~/assets/images/xiaohan-pattern.png');
   background-size: cover, 100% 100%, 100% 100%, 200% 200%;
   background-blend-mode: overlay;
   box-shadow: inset 0 0 100px rgba(202, 202, 212, 0.3);
@@ -551,17 +542,17 @@
 }
 
 .theme-bailu .traditional-ornament {
-  background-image: url('/assets/images/bailu-ornament.svg');
+  background-image: url('~/assets/images/bailu-ornament.svg');
   filter: drop-shadow(0 0 5px rgba(215, 190, 105, 0.5));
 }
 
 .theme-hanlu .traditional-ornament {
-  background-image: url('/assets/images/hanlu-ornament.svg');
+  background-image: url('~/assets/images/hanlu-ornament.svg');
   filter: drop-shadow(0 0 5px rgba(80, 140, 190, 0.5));
 }
 
 .theme-xiaohan .traditional-ornament {
-  background-image: url('/assets/images/xiaohan-ornament.svg');
+  background-image: url('~/assets/images/xiaohan-ornament.svg');
   filter: drop-shadow(0 0 5px rgba(202, 202, 212, 0.5));
 }
 

@@ -5,7 +5,7 @@
     
     <!-- 主视觉图像 -->
     <section class="main-visual relative h-80 rounded-lg overflow-hidden">
-      <img src="/assets/images/games/arknights-endfield.svg" alt="关于我们" class="w-full h-full object-cover">
+      <img src="~/assets/images/games/arknights-endfield.svg" alt="关于我们" class="w-full h-full object-cover">
       <div class="absolute inset-0 bg-gradient-to-t from-secondary-dark/70 to-transparent"></div>
       <div class="absolute bottom-0 left-0 p-8 w-full">
         <h1 class="text-5xl font-bold mb-2 text-primary-accent font-serif">关于我们</h1>
@@ -30,7 +30,7 @@
         </div>
         <div class="w-full md:w-1/2 flex justify-center">
           <div class="relative w-full h-64 rounded-lg overflow-hidden border-4 border-primary-accent/20">
-            <img src="/assets/images/games/wuthering-waves-blue.svg" alt="公司历程" class="w-full h-full object-cover">
+            <img src="~/assets/images/games/wuthering-waves-blue.svg" alt="公司历程" class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-gradient-to-t from-secondary-dark/50 to-transparent"></div>
             <div class="absolute bottom-4 left-4 right-4 text-center">
               <span class="bg-primary-accent text-primary-light px-4 py-1 rounded-full text-sm font-medium">
