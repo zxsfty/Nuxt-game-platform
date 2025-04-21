@@ -1,5 +1,5 @@
 <template>
-  <div class="seasonal-scene relative">
+  <div class="seasonal-scene relative h-full w-full flex items-center justify-center">
     <!-- 节气特定装饰元素 -->
     <div class="seasonal-pattern absolute inset-0 opacity-10" :class="`${$state.themeStyle.value}-pattern`"></div>
     
@@ -43,7 +43,7 @@
     </div>
     
     <!-- 渲染内容插槽 -->
-    <div class="seasonal-content relative z-10">
+    <div class="seasonal-content relative z-10 w-full">
       <slot></slot>
     </div>
   </div>
@@ -167,4 +167,4 @@ onMounted(updateAnimations);
 }
 
 /* 注意: 这里的样式只是基础样式，详细的季节元素样式在assets/css/seasonal-scene-elements.css中定义 */
-</style> 
+</style>

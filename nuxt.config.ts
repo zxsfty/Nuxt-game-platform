@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ['@nuxtjs/tailwindcss'],
-  css: ['~/assets/css/main.css', '~/assets/css/themes.css', '~/assets/css/seasonal-animations.css', '~/assets/css/seasonal-scene-elements.css'],
+  css: ['~/assets/css/main.css', '~/assets/css/themes.css', '~/assets/css/seasonal-animations.css', '~/assets/css/seasonal-scene-elements.css', '~/assets/css/homepage-effects.css'],
 
   postcss: {
     plugins: {

@@ -1,0 +1,199 @@
+/* 首页特效样式 */
+
+/* 动态背景粒子效果 */
+.seasonal-particles {
+  background-image: radial-gradient(circle, rgba(var(--color-primary-accent), 0.2) 1px, transparent 1px);
+  background-size: 20px 20px;
+  animation: particlesFade 8s infinite alternate;
+}
+
+@keyframes particlesFade {
+  0% { opacity: 0.2; }
+  50% { opacity: 0.5; }
+  100% { opacity: 0.2; }
+}
+
+/* 首页标题和内容居中样式 */
+.hero-section .max-w-3xl {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.hero-section h1,
+.hero-section p {
+  text-align: center;
+  width: 100%;
+  max-width: 100%;
+}
+
+.hero-section button {
+  margin: 0 auto;
+  display: block;
+}
+
+/* 慢速脉冲动画 */
+.animate-pulse-slow {
+  animation: pulseSlow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulseSlow {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.5; }
+}
+
+/* 季节性标签样式 */
+.seasonal-tag {
+  background-color: rgba(var(--color-primary-accent), 0.2);
+  color: rgb(var(--color-primary-accent));
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(var(--color-primary-accent), 0.3);
+  transition: all 0.3s ease;
+}
+
+.seasonal-tag:hover {
+  background-color: rgba(var(--color-primary-accent), 0.3);
+  transform: translateY(-2px);
+}
+
+/* 白露特效 */
+.seasonal-tag-bailu {
+  background-color: rgba(79, 107, 255, 0.2);
+  border-color: rgba(79, 107, 255, 0.4);
+}
+
+.floating-dewdrops {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.floating-dewdrops::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.8) 1px, transparent 2px);
+  background-size: 50px 50px;
+  animation: dewFloat 15s linear infinite;
+  opacity: 0.3;
+}
+
+@keyframes dewFloat {
+  0% { background-position: 0 0; }
+  100% { background-position: 50px 50px; }
+}
+
+/* 寒露特效 */
+.seasonal-tag-hanlu {
+  background-color: rgba(255, 152, 0, 0.2);
+  border-color: rgba(255, 152, 0, 0.4);
+}
+
+.falling-leaves {
+  position: absolute;
+  top: -10%;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.falling-leaves::before,
+.falling-leaves::after {
+  content: '🍂';
+  position: absolute;
+  font-size: 20px;
+  opacity: 0.3;
+  animation: leafFall 10s linear infinite;
+}
+
+.falling-leaves::before {
+  left: 10%;
+  animation-delay: 2s;
+}
+
+.falling-leaves::after {
+  left: 70%;
+  animation-delay: 5s;
+}
+
+@keyframes leafFall {
+  0% { top: -10%; transform: rotate(0deg); }
+  100% { top: 110%; transform: rotate(360deg); }
+}
+
+/* 小寒特效 */
+.seasonal-tag-xiaohan {
+  background-color: rgba(156, 111, 255, 0.2);
+  border-color: rgba(156, 111, 255, 0.4);
+}
+
+.snowfall {
+  position: absolute;
+  top: -10%;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.snowfall::before,
+.snowfall::after {
+  content: '❄';
+  position: absolute;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.7);
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+  animation: snowFall 15s linear infinite;
+  opacity: 0.4;
+}
+
+.snowfall::before {
+  left: 30%;
+  animation-delay: 0s;
+}
+
+.snowfall::after {
+  left: 60%;
+  animation-delay: 7s;
+}
+
+@keyframes snowFall {
+  0% { top: -10%; transform: rotate(0deg); }
+  100% { top: 110%; transform: rotate(360deg); }
+}
+
+/* 阴影发光效果 */
+.shadow-glow {
+  box-shadow: 0 0 10px rgba(var(--color-primary-accent), 0.3);
+  transition: box-shadow 0.3s ease;
+}
+
+.shadow-glow:hover {
+  box-shadow: 0 0 15px rgba(var(--color-primary-accent), 0.5);
+}
+
+/* 响应式优化 */
+@media (max-width: 768px) {
+  .seasonal-particles {
+    background-size: 15px 15px;
+  }
+  
+  .floating-dewdrops::before,
+  .falling-leaves::before,
+  .falling-leaves::after,
+  .snowfall::before,
+  .snowfall::after {
+    opacity: 0.2;
+  }
+}

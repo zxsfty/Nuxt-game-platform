@@ -3,16 +3,26 @@
     <!-- 季节性背景 -->
     <SeasonalBackground />
     
-    <section class="hero-section bg-primary-light rounded-lg p-8 border border-primary-accent/30 transform transition-all duration-500 hover:shadow-theme relative overflow-hidden backdrop-blur-sm">
+    <section class="hero-section bg-primary-light rounded-lg p-8 border border-primary-accent/30 transform transition-all duration-500 hover:shadow-theme relative overflow-hidden backdrop-blur-sm animate-fadeIn min-h-[70vh] flex items-center justify-center">
       <!-- 使用季节场景组件 -->
-      <SeasonalScene>
-        <div class="hero-glow absolute inset-0 opacity-30"></div>
-        <div class="max-w-3xl mx-auto text-center relative z-10">
-          <h1 class="text-5xl font-bold mb-6 text-primary-accent animate-fadeIn font-serif seasonal-text-glow">
-            The broken with star sinks
+      <SeasonalScene class="w-full">
+        <!-- 动态背景效果 -->
+        <div class="hero-glow absolute inset-0 opacity-30 animate-pulse-slow"></div>
+        <div class="seasonal-particles absolute inset-0 opacity-40"></div>
+        
+        <!-- 节气特效装饰 -->
+        <div v-if="$state.themeStyle.value === 'bailu'" class="floating-dewdrops"></div>
+        <div v-if="$state.themeStyle.value === 'hanlu'" class="falling-leaves"></div>
+        <div v-if="$state.themeStyle.value === 'xiaohan'" class="snowfall"></div>
+        
+        <div class="max-w-3xl mx-auto text-center relative z-10 w-full flex flex-col items-center justify-center">
+          <h1 class="text-5xl font-bold mb-6 text-primary-accent animate-fadeIn font-serif seasonal-text-glow text-center w-full">
+            <span class="relative inline-block mx-auto">The broken with star sinks
+              <span class="absolute -bottom-2 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-primary-accent to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700"></span>
+            </span>
           </h1>
-          <p class="text-xl mb-8 animate-fadeIn" style="animation-delay: 1.2s">The broken with star sinks</p>
-          <button class="bg-primary-accent/80 hover:bg-primary-accent text-primary-light font-bold py-3 px-8 rounded-full transition-all transform hover:scale-105 relative overflow-hidden group">
+          <p class="text-xl mb-8 animate-fadeIn mx-auto" style="animation-delay: 1.2s">The broken with star sinks</p>
+          <button class="bg-primary-accent/80 hover:bg-primary-accent text-primary-light font-bold py-3 px-8 rounded-full transition-all transform hover:scale-105 relative overflow-hidden group shadow-glow mx-auto">
             <span class="relative z-10 inline-flex items-center">
               立即开始
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 transform transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -20,25 +30,48 @@
               </svg>
             </span>
             <span class="absolute inset-0 bg-primary-accent opacity-0 group-hover:opacity-100 transition-all duration-300"></span>
+            <!-- 按钮光晕效果 -->
+            <span class="absolute -inset-1 rounded-full blur-md bg-primary-accent/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
           </button>
         </div>
       </SeasonalScene>
     </section>
 
-    <section class="features-section grid md:grid-cols-3 gap-6">
-      <div 
-        v-for="(feature, index) in features" 
-        :key="index" 
-        class="bg-primary-light p-6 rounded-lg border border-primary-accent/20 transition-all duration-300 transform hover:scale-102 hover:shadow-theme hover:border-primary-accent/50 relative overflow-hidden group"
+    <section class="features-section my-12">
+      <h2 
+        class="text-3xl font-bold mb-8 text-center text-primary-accent relative inline-block w-full font-serif"
         v-motion
-        :initial="{ opacity: 0, y: 50 }"
-        :enter="{ opacity: 1, y: 0, transition: { delay: index * 150 } }"
+        :initial="{ opacity: 0, scale: 0.9 }"
+        :enter="{ opacity: 1, scale: 1, transition: { duration: 800 } }"
       >
-        <div class="absolute inset-0 bg-gradient-to-br from-secondary-dark/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-        <div class="relative z-10">
-          <div class="text-primary-accent text-3xl mb-4 transform transition-all duration-300 group-hover:scale-110">{{ feature.icon }}</div>
-          <h3 class="text-xl font-bold mb-2 transition-colors duration-300 group-hover:text-primary-accent">{{ feature.title }}</h3>
-          <p class="text-secondary-light transition-all duration-300 group-hover:text-primary-light">{{ feature.description }}</p>
+        <span class="relative z-10">平台特色</span>
+        <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 h-0.5 w-24 bg-gradient-to-r from-transparent via-primary-accent to-transparent"></span>
+      </h2>
+      
+      <div class="grid md:grid-cols-3 gap-6">
+        <div 
+          v-for="(feature, index) in features" 
+          :key="index" 
+          class="bg-primary-light p-6 rounded-lg border border-primary-accent/20 transition-all duration-500 transform hover:scale-102 hover:shadow-theme hover:border-primary-accent/50 relative overflow-hidden group"
+          v-motion
+          :initial="{ opacity: 0, y: 50 }"
+          :enter="{ opacity: 1, y: 0, transition: { delay: index * 150 } }"
+        >
+          <!-- 背景效果 -->
+          <div class="absolute inset-0 bg-gradient-to-br from-secondary-dark/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          
+          <!-- 季节性装饰 -->
+          <div class="absolute top-0 right-0 w-20 h-20 -mt-10 -mr-10 rounded-full bg-primary-accent/10 blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700 transform group-hover:scale-150"></div>
+          
+          <div class="relative z-10">
+            <div class="text-primary-accent text-3xl mb-4 transform transition-all duration-300 group-hover:scale-110 seasonal-emoji-glow">{{ feature.icon }}</div>
+            <h3 class="text-xl font-bold mb-3 transition-colors duration-300 group-hover:text-primary-accent">{{ feature.title }}</h3>
+            <p class="text-secondary-light transition-all duration-300 group-hover:text-primary-light">{{ feature.description }}</p>
+          </div>
+          
+          <!-- 装饰边角 -->
+          <div class="absolute top-0 left-0 w-4 h-4 border-t border-l border-primary-accent/30 opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+          <div class="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-primary-accent/30 opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
         </div>
       </div>
     </section>
@@ -53,11 +86,11 @@
         <span class="relative z-10">热门游戏</span>
         <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 h-0.5 w-24 bg-gradient-to-r from-transparent via-primary-accent to-transparent"></span>
       </h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <div 
           v-for="(game, index) in games" 
           :key="index" 
-          class="game-card bg-primary-light rounded-lg overflow-hidden border border-primary-accent/20 transition-all duration-300 transform hover:scale-105 hover:shadow-theme hover:border-primary-accent/50 relative"
+          class="game-card bg-primary-light rounded-lg overflow-hidden border border-primary-accent/20 transition-all duration-500 transform hover:scale-105 hover:shadow-theme hover:border-primary-accent/50 relative group"
           :class="`game-card-${$state.themeStyle.value}`"
           :style="{ 'animation-delay': `${index * 0.15}s` }"
           v-motion
@@ -67,24 +100,40 @@
           <!-- 节气特定装饰元素 -->
           <div class="seasonal-pattern absolute inset-0 opacity-5" :class="`${$state.themeStyle.value}-pattern`"></div>
           
-          <!-- 卡片装饰边角 -->
-          <div class="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-primary-accent/50 rounded-tl-lg"></div>
-          <div class="absolute top-0 right-0 w-6 h-6 border-t-2 border-r-2 border-primary-accent/50 rounded-tr-lg"></div>
-          <div class="absolute bottom-0 left-0 w-6 h-6 border-b-2 border-l-2 border-primary-accent/50 rounded-bl-lg"></div>
-          <div class="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-primary-accent/50 rounded-br-lg"></div>
+          <!-- 卡片装饰边角 - 增强效果 -->
+          <div class="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-primary-accent/50 rounded-tl-lg transition-all duration-500 group-hover:w-8 group-hover:h-8 group-hover:border-primary-accent"></div>
+          <div class="absolute top-0 right-0 w-6 h-6 border-t-2 border-r-2 border-primary-accent/50 rounded-tr-lg transition-all duration-500 group-hover:w-8 group-hover:h-8 group-hover:border-primary-accent"></div>
+          <div class="absolute bottom-0 left-0 w-6 h-6 border-b-2 border-l-2 border-primary-accent/50 rounded-bl-lg transition-all duration-500 group-hover:w-8 group-hover:h-8 group-hover:border-primary-accent"></div>
+          <div class="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-primary-accent/50 rounded-br-lg transition-all duration-500 group-hover:w-8 group-hover:h-8 group-hover:border-primary-accent"></div>
           
-          <div class="h-48 bg-secondary-dark flex items-center justify-center overflow-hidden group relative">
-            <div class="absolute inset-0 bg-gradient-to-br from-secondary-dark to-transparent opacity-70"></div>
-            <div class="absolute inset-0 bg-grid opacity-10"></div>
+          <!-- 季节性标签 -->
+          <div class="absolute top-3 right-3 z-20">
+            <span class="seasonal-tag px-2 py-1 text-xs rounded-full font-medium" :class="`seasonal-tag-${$state.themeStyle.value}`">
+              <span v-if="$state.themeStyle.value === 'bailu'">白露</span>
+              <span v-if="$state.themeStyle.value === 'hanlu'">寒露</span>
+              <span v-if="$state.themeStyle.value === 'xiaohan'">小寒</span>
+            </span>
+          </div>
+          
+          <div class="h-48 bg-secondary-dark flex items-center justify-center overflow-hidden relative">
+            <div class="absolute inset-0 bg-gradient-to-br from-secondary-dark to-transparent opacity-70 transition-opacity duration-500 group-hover:opacity-50"></div>
+            <div class="absolute inset-0 bg-grid opacity-10 group-hover:opacity-20 transition-opacity duration-500"></div>
             <div class="text-6xl transition-all duration-500 transform group-hover:scale-125 group-hover:rotate-12 relative z-10 seasonal-emoji-glow">{{ game.emoji }}</div>
             <div class="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-secondary-dark to-transparent opacity-0 group-hover:opacity-70 transition-opacity duration-300"></div>
+            
+            <!-- 悬停时显示的快速操作按钮 -->
+            <div class="absolute inset-x-0 bottom-0 flex justify-center items-center gap-2 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-10">
+              <button class="bg-primary-accent/90 hover:bg-primary-accent text-primary-light text-xs py-1 px-3 rounded-full transition-colors shadow-glow">
+                立即体验
+              </button>
+            </div>
           </div>
           <div class="p-4 relative">
-            <h3 class="font-bold text-lg mb-2 transition-colors duration-300 hover:text-primary-accent seasonal-text-hover">{{ game.name }}</h3>
-            <p class="text-sm text-secondary-light mb-2 italic seasonal-description">{{ game.seasonalDesc[$state.themeStyle.value] }}</p>
+            <h3 class="font-bold text-lg mb-2 transition-colors duration-300 group-hover:text-primary-accent seasonal-text-hover">{{ game.name }}</h3>
+            <p class="text-sm text-secondary-light mb-3 italic seasonal-description">{{ game.seasonalDesc[$state.themeStyle.value] }}</p>
             <div class="flex justify-between items-center">
-              <span class="text-primary-accent transition-all duration-300 hover:scale-110 inline-block seasonal-price">{{ game.price }}</span>
-              <button class="text-sm bg-primary-accent/80 hover:bg-primary-accent text-primary-light px-3 py-1 rounded-full transition-all duration-300 transform hover:scale-105 relative overflow-hidden group">
+              <span class="text-primary-accent font-medium transition-all duration-300 group-hover:scale-110 inline-block seasonal-price">{{ game.price }}</span>
+              <button class="text-sm bg-primary-accent/80 hover:bg-primary-accent text-primary-light px-3 py-1 rounded-full transition-all duration-300 transform hover:scale-105 relative overflow-hidden group shadow-sm hover:shadow-glow">
                 <span class="relative z-10">查看详情</span>
                 <span class="absolute inset-0 bg-primary-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
               </button>
